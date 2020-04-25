@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UserController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="41.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,22 +23,22 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="287.0" text="POINTS:">
+      <Label fx:id="txtPoints" layoutX="66.0" layoutY="287.0" text="POINTS:">
          <font>
-            <Font name="Arial Narrow Bold" size="40.0" />
+            <Font name="Bebas Neue" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="341.0" layoutY="287.0" text="0">
+      <Label fx:id="points" layoutX="341.0" layoutY="287.0" text="0" visible="false">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <Label layoutX="400.0" layoutY="67.0" text="Fernanda">
+      <Label fx:id="nickname" layoutX="400.0" layoutY="67.0" text="Fernanda" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="400.0" layoutY="148.0" text="Female">
+      <Label fx:id="gender" layoutX="400.0" layoutY="148.0" text="Female" visible="false">
          <font>
             <Font size="24.0" />
          </font>
