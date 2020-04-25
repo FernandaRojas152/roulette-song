@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="471.0" layoutY="44.0" mnemonicParsing="false" text="Sign in" />
+      <Button layoutX="471.0" layoutY="137.0" mnemonicParsing="false" text="Log in" />
+      <Button layoutX="471.0" layoutY="260.0" mnemonicParsing="false" text="Play" />
+      <Circle fill="WHITE" layoutX="217.0" layoutY="194.0" radius="157.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="109.0" endY="13.0" layoutX="217.0" layoutY="69.0" startX="-97.0" startY="247.0" />
+      <Line endX="131.0" endY="210.0" layoutX="193.0" layoutY="97.0" startX="-89.0" startY="-8.0" />
+      <Line endX="205.0" endY="-1.0" layoutX="169.0" layoutY="204.0" startX="-109.0" startY="-1.0" />
+      <Line endX="1.0" endY="277.0" layoutX="219.0" layoutY="74.0" startX="-3.0" startY="-37.0" />
+   </children>
+</AnchorPane>

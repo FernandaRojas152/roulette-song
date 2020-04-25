@@ -8,9 +8,16 @@ package model;
  */
 public class User {
 	//Attributes
+	/** String that represents the name of the player*/
 	private String name;
+	
+	/** String that represents the nickname that the user chooses*/
 	private String nickname;
+	
+	/** String that represents the gender of the user. It can be male or female*/
 	private String gender;
+	
+	/** String that represents the password of the user*/
 	private String password;
 	
 	private Points points;
