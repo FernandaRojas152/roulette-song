@@ -23,6 +23,7 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		Font font= new Font("Bebas Neue", 40);
 		/**Label txtPoints = new Label("Points");
 		txtPoints.setFont(new Font("Bebas Neue", 40));
 		*/
