@@ -1,5 +1,5 @@
 package customExceptions;
 
-public class RequiredFieldsException {
+public class RequiredFieldsException extends Exception{
 
 }

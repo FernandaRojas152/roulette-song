@@ -2,17 +2,21 @@ package model;
 
 import java.util.ArrayList;
 
+import customExceptions.RequiredFieldsException;
+import customExceptions.UserAlreadyExistsException;
+import customExceptions.UserDoesntExistException;
+
 /**
  * @author Fernanda
  * @version March 26th 2020
  * Class Game
  */
 public class Game {
-	
+
 	private ArrayList<User> users;
-	
+
 	public Game() {
-		users= new ArrayList<>();
+		users= new ArrayList<User>();
 	}
 
 	public ArrayList<User> getUsers() {
@@ -22,7 +26,7 @@ public class Game {
 	public void setUsers(ArrayList<User> users) {
 		this.users = users;
 	}
-	
+
 	/**
 	 * This method will search if the userExists already has been registered and exists in the game.
 	 * @param nickname -name that the user has and it's going to be the one that it's going to be
@@ -33,26 +37,72 @@ public class Game {
 		boolean exists= false;
 		int initial=0;
 		int end= users.size()-1;
-		
+
 		while(initial<= end && !exists) {
-			
+
 			int mid= (initial+end)/2;
-			
+
 			if(users.get(mid).getNickname().equalsIgnoreCase(nickname)) {
 				exists= true;
 			}else if(users.get(mid).getNickname().compareToIgnoreCase(nickname)<0) {
-				
+
 				initial= mid+1;
-				
+
 			}else {
 				end= mid-1;
 			}
 		}
 		return exists;
 	}
-	
-	public User searchUser() {
-		return null;
-		
+
+	/**
+	 * This method will search the user that the client wants to see
+	 * @param nickname -name of the user that it's going to be searched.
+	 * @return temp -the user searched.
+	 * @throws UserDoesntExistException -it's thrown when the user searched it's not found. 
+	 */
+	public User searchUser(String nickname) throws UserDoesntExistException{
+		User temp= null;
+		int initial= 0;
+		int end= users.size()-1;
+
+		while(initial<= end && temp== null) {
+			int mid= (initial+end)/2;
+
+			if(users.get(mid).getNickname().equalsIgnoreCase(nickname)) {
+				temp= users.get(mid);
+
+			}else if(users.get(mid).getNickname().compareTo(nickname)<0) {
+				initial= mid+1;
+			}else {
+				end= end-1;
+			}
+		}
+
+		if(temp== null) {
+			throw new UserDoesntExistException(nickname);
+		}
+
+		return temp;
 	}
+
+	/**
+	 * 
+	 * @param user
+	 * @throws UserAlreadyExists
+	 * @throws RequiredFieldsException
+	 */
+	public void addUser(User user) throws UserAlreadyExistsException, RequiredFieldsException{
+		if(userExists(user.getNickname())) {
+			throw new UserAlreadyExistsException();
+		}else {
+			if(!user.getName().isEmpty() && !user.getNickname().isEmpty() && !user.getGender().isEmpty() && !user.getPassword().isEmpty()) {
+				users.add(user);
+			}else {
+				throw new RequiredFieldsException();
+			}
+		}
+	}
+	
+	
 }
