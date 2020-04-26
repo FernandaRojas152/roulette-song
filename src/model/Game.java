@@ -176,12 +176,15 @@ public class Game {
 	/**
 	 * 
 	 */
-	public void sortUsers() {
+	/**public void sortUsers() {
 		for (int i = 1; i < users.size()-1; i++) {
 			for (int j = 1; j>0 && users.get(j-1).compareTo(users.get(j))>0; j--) {
-				
+				User temp= users.get(j);
+				users.set(j, users.get(j-1));
+				users.set(j-1,temp);
 			}
 		}
 		
 	}
+	*/
 }
