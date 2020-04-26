@@ -1,5 +1,10 @@
 package model;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import customExceptions.RequiredFieldsException;
@@ -88,6 +93,8 @@ public class Game {
 
 	/**
 	 * 
+	 * <b> pre: </b>
+	 * <b> post: </b>
 	 * @param user
 	 * @throws UserAlreadyExists
 	 * @throws RequiredFieldsException
@@ -104,5 +111,77 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * 
+	 */
+	public void save() {
+		FileOutputStream fS= null;
+		ObjectOutputStream oS= null;
+		
+		try {
+			fS = new FileOutputStream("./data/gameData.dat");
+			oS= new ObjectOutputStream(fS);
+			
+			oS.writeObject(users);
+			
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(users!=null) {
+					fS.close();
+				}
+				if(oS!=null) {
+					oS.close();
+				}
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+	}
 	
+	/**
+	 * 
+	 */
+	public void readData() {
+		FileInputStream fS= null;
+		ObjectInputStream oS= null;
+		
+		ArrayList<User> us= null;
+		
+		try {
+			fS = new FileInputStream("./data/gameData.dat");
+			oS= new ObjectInputStream(fS);
+			us= (ArrayList<User>) oS.readObject();
+			setUsers(us);
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			try {
+				if(fS!=null) {
+					fS.close();
+				}
+				
+				if(oS!=null) {
+					oS.close();
+				}
+			} catch (IOException e2) {
+				System.out.println(e2.getMessage());
+			}
+			
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void sortUsers() {
+		for (int i = 1; i < users.size()-1; i++) {
+			for (int j = 1; j>0 && users.get(j-1).compareTo(users.get(j))>0; j--) {
+				
+			}
+		}
+		
+	}
 }
