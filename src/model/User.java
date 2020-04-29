@@ -21,7 +21,7 @@ public class User implements Comparable<User>{
 	private String password;
 	
 	/** */
-	private Points points;
+	private int points;
 	
 	//Methods
 	/**
@@ -36,7 +36,7 @@ public class User implements Comparable<User>{
 		this.nickname = nickname;
 		this.gender = gender;
 		this.password = password;
-		points= null;
+		points= 10;
 	}
 
 	public String getName() {
@@ -71,16 +71,24 @@ public class User implements Comparable<User>{
 		this.password = password;
 	}
 
-	public Points getPoints() {
+	public int getPoints() {
 		return points;
 	}
 
-	public void setPoints(Points points) {
+	public void setPoints(int points) {
 		this.points = points;
+	}
+	
+	public int acumulatePoints(int p) {
+		if (p==1) {
+			return 1;
+		} else {
+			return acumulatePoints(p-1)+p;
+		}
 	}
 
 	@Override
-	public int compareTo(User u) {
+	public int compareTo(User u){
 		return this.getNickname().compareToIgnoreCase(u.getNickname());
 	}
 	
