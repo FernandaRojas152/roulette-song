@@ -6,7 +6,7 @@ package model;
  * @version March 24th 2020
  * Class User
  */
-public class User {
+public class User implements Comparable<User>{
 	//Attributes
 	/** String that represents the name of the player*/
 	private String name;
@@ -20,8 +20,17 @@ public class User {
 	/** String that represents the password of the user*/
 	private String password;
 	
+	/** */
 	private Points points;
-
+	
+	//Methods
+	/**
+	 * 
+	 * @param name
+	 * @param nickname
+	 * @param gender
+	 * @param password
+	 */
 	public User(String name, String nickname, String gender, String password) {
 		this.name = name;
 		this.nickname = nickname;
@@ -68,6 +77,11 @@ public class User {
 
 	public void setPoints(Points points) {
 		this.points = points;
+	}
+
+	@Override
+	public int compareTo(User u) {
+		return this.getNickname().compareToIgnoreCase(u.getNickname());
 	}
 	
 }
