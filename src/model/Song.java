@@ -15,10 +15,20 @@ public class Song {
 	
 	private String songName;
 	private String artist;
+	private String fileP;
 	
-	public Song(String songName, String artist) {
+	public Song(String songName, String artist, String fileP) {
 		this.songName= songName;
 		this.artist= artist;
+		this.fileP= fileP;
+	}
+
+	public String getFileP() {
+		return fileP;
+	}
+
+	public void setFileP(String fileP) {
+		this.fileP = fileP;
 	}
 
 	public Song getLast() {
