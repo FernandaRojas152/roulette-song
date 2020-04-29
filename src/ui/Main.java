@@ -26,7 +26,7 @@ public class Main extends Application{
 		Parent root=FXMLLoader.load(getClass().getResource("PrincipalWindow.fxml"));
 		Scene scene= new Scene(root);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("User profile");
+		primaryStage.setTitle("Roulette song");
 		primaryStage.setResizable(false);
 		primaryStage.show();
 	}

@@ -101,7 +101,7 @@ public class Game {
 	 */
 	public void addUser(User user) throws UserAlreadyExistsException, RequiredFieldsException{
 		if(userExists(user.getNickname())) {
-			throw new UserAlreadyExistsException();
+			throw new UserAlreadyExistsException(user.getNickname());
 		}else {
 			if(!user.getName().isEmpty() && !user.getNickname().isEmpty() && !user.getGender().isEmpty() && !user.getPassword().isEmpty()) {
 				users.add(user);

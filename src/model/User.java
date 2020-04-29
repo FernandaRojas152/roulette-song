@@ -1,7 +1,6 @@
 package model;
 
 /**
- * 
  * @author Fernanda
  * @version March 24th 2020
  * Class User
@@ -38,47 +37,92 @@ public class User implements Comparable<User>{
 		this.password = password;
 		points= 10;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
-
+	
+	/**
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getNickname() {
 		return nickname;
 	}
 
+	/**
+	 * 
+	 * @param nickname
+	 */
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getGender() {
 		return gender;
 	}
 
+	/**
+	 * 
+	 * @param gender
+	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getPassword() {
 		return password;
 	}
 
+	/**
+	 * 
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getPoints() {
 		return points;
 	}
 
+	/**
+	 * 
+	 * @param points
+	 */
 	public void setPoints(int points) {
 		this.points = points;
 	}
 	
+	/**
+	 * 
+	 * @param p
+	 * @return
+	 */
 	public int acumulatePoints(int p) {
 		if (p==1) {
 			return 1;
