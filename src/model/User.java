@@ -2,7 +2,7 @@ package model;
 
 /**
  * @author Fernanda
- * @version March 24th 2020
+ * @version April 24th 2020
  * Class User
  */
 public class User implements Comparable<User>{

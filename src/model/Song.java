@@ -3,7 +3,7 @@ package model;
 /**
  * 
  * @author Fernanda
- * @version March 26th 2020
+ * @version April 26th 2020
  * Class Song
  */
 public class Song {

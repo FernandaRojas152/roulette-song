@@ -13,7 +13,7 @@ import customExceptions.UserDoesntExistException;
 
 /**
  * @author Fernanda
- * @version March 26th 2020
+ * @version April 26th 2020
  * Class Game
  */
 public class Game {
