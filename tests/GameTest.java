@@ -95,7 +95,7 @@ class GameTest {
 	void testSortUser() throws UserAlreadyExistsException, RequiredFieldsException {
 		setUpStage4();
 		game.sortUsers();
-		//System.out.println(game.getUsers().get(0).getNickname());
+		System.out.println(game.getUsers().get(0).getNickname());
 		assertEquals("angelica2013", game.getUsers().get(0).getNickname());
 	}
 	
