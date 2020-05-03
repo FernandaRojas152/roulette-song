@@ -10,7 +10,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
- * 
  * @author Fernanda
  * @version March 24th 2020
  * Class Main

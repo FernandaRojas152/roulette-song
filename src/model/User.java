@@ -124,6 +124,7 @@ public class User implements Comparable<User>{
 	 * @return
 	 */
 	public int acumulatePoints(int p) {
+		p= points;
 		if (p==1) {
 			return 1;
 		} else {
