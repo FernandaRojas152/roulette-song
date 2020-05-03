@@ -17,21 +17,33 @@ import customExceptions.UserDoesntExistException;
  * Class Game
  */
 public class Game {
-
+	/** */
 	private ArrayList<User> users;
-
+	
+	//Methods
+	/**
+	 * 
+	 */
 	public Game() {
 		users= new ArrayList<User>();
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<User> getUsers() {
 		return users;
 	}
-
+	
+	/**
+	 * 
+	 * @param users
+	 */
 	public void setUsers(ArrayList<User> users) {
 		this.users = users;
 	}
-
+	
 	/**
 	 * This method will search if the userExists already has been registered and exists in the game.
 	 * @param nickname -name that the user has and it's going to be the one that it's going to be

@@ -2,12 +2,12 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="302.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SConfigController">
    <children>
       <Pane prefHeight="141.0" prefWidth="600.0">
          <children>
@@ -16,13 +16,16 @@
       </Pane>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <RadioButton layoutX="175.0" layoutY="44.0" mnemonicParsing="false" text="Random Songs" />
+            <RadioButton fx:id="random" layoutX="175.0" layoutY="44.0" mnemonicParsing="false" text="Random Songs">
+               <toggleGroup>
+                  <ToggleGroup fx:id="options" />
+               </toggleGroup></RadioButton>
             <Line endX="100.0" layoutX="238.0" layoutY="23.0" startX="-100.0" />
             <Line endX="-100.0" endY="135.0" layoutX="237.0" layoutY="23.0" startX="-100.0" />
             <Line endX="-100.0" endY="135.0" layoutX="438.0" layoutY="23.0" startX="-100.0" />
             <Line endX="100.0" layoutX="238.0" layoutY="158.0" startX="-100.0" />
-            <RadioButton layoutX="175.0" layoutY="74.0" mnemonicParsing="false" text="Sort Songs" />
-            <RadioButton layoutX="175.0" layoutY="100.0" mnemonicParsing="false" text="Select by artist" />
+            <RadioButton fx:id="sort" layoutX="175.0" layoutY="74.0" mnemonicParsing="false" text="Sort Songs" toggleGroup="$options" />
+            <RadioButton fx:id="byArtist" layoutX="175.0" layoutY="100.0" mnemonicParsing="false" text="Select by artist" toggleGroup="$options" />
          </children>
       </Pane>
    </children>

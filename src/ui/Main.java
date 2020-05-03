@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
  */
 
 public class Main extends Application{
+	private PrincipalWindowController principal;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -29,6 +31,8 @@ public class Main extends Application{
 		primaryStage.setTitle("Roulette song");
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(e -> Platform.exit());
 	}
 
 }
