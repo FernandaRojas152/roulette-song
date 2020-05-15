@@ -17,6 +17,7 @@ public class PrincipalWindowController {
     void logIn(ActionEvent event) throws IOException{
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterUser.fxml"));
     	Scene scene= new Scene(fxmlLoader.load());
+    	//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
     	Stage stage= new Stage();
     	stage.setTitle("Log in");
     	stage.setScene(scene);
@@ -27,6 +28,7 @@ public class PrincipalWindowController {
     void play(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Playing.fxml"));
     	Scene scene= new Scene(fxmlLoader.load());
+    	//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
     	Stage stage= new Stage();
     	stage.setTitle("Roulette Song");
     	stage.setScene(scene);
@@ -41,6 +43,7 @@ public class PrincipalWindowController {
     void signIn(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignIn.fxml"));
     	Scene scene= new Scene(fxmlLoader.load());
+    	//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
     	Stage stage= new Stage();
     	stage.setTitle("Sign in");
     	stage.setScene(scene);

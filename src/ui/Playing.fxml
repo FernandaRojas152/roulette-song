@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.GameController">
    <children>
-      <Circle fill="WHITE" layoutX="285.0" layoutY="200.0" radius="194.0" stroke="BLACK" strokeType="INSIDE" />
       <Button layoutX="493.0" layoutY="330.0" mnemonicParsing="false" onAction="#spin" prefHeight="45.0" prefWidth="93.0" text="Spin">
          <font>
             <Font size="18.0" />
@@ -28,5 +28,10 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <ImageView fx:id="roulette" fitHeight="363.0" fitWidth="379.0" layoutX="115.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@roulette.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

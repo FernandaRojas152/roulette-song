@@ -1,5 +1,7 @@
 package thread;
 
-public class ImageThread {
-
+public class ImageThread extends Thread{
+	public void run() {
+		
+	}
 }

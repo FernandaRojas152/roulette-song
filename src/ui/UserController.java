@@ -10,6 +10,12 @@ public class UserController {
     private ImageView image;
 
     @FXML
+    private Label nick;
+
+    @FXML
+    private Label g;
+
+    @FXML
     private Label txtPoints;
 
     @FXML
@@ -20,5 +26,5 @@ public class UserController {
 
     @FXML
     private Label gender;
-}
 
+}

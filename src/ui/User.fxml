@@ -13,12 +13,12 @@
             <Image url="@blank-profile-picture-973460_640.png" />
          </image>
       </ImageView>
-      <Label layoutX="252.0" layoutY="67.0" text="Nickname:">
+      <Label fx:id="nick" layoutX="252.0" layoutY="67.0" text="Nickname:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="259.0" layoutY="148.0" text="Gender:">
+      <Label fx:id="g" layoutX="259.0" layoutY="148.0" text="Gender:">
          <font>
             <Font size="24.0" />
          </font>
