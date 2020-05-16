@@ -35,9 +35,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="364.0">
          <children>
-            <Label layoutX="56.0" layoutY="20.0" text="Confirm Password:" />
-            <PasswordField layoutX="173.0" layoutY="16.0" />
-            <Button layoutX="147.0" layoutY="53.0" mnemonicParsing="false" onAction="#registerUser" text="Log in" />
+            <Button fx:id="register" layoutX="146.0" layoutY="32.0" mnemonicParsing="false" onAction="#registerUser" text="Log in" />
          </children>
       </AnchorPane>
    </children>

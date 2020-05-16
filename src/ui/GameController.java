@@ -7,14 +7,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import javax.swing.JOptionPane;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import model.Image;
 import model.MusicLibrary;
@@ -31,7 +30,6 @@ public class GameController {
 	
 	/** association with the image that's going to be rotating*/
 	private Image i;
-	
 	private int x= 0;
 	//attributes
 	@FXML

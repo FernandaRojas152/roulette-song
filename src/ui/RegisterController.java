@@ -7,9 +7,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Game;
 import model.User;
 
@@ -22,6 +24,7 @@ public class RegisterController {
 	//associations
 	private Game game;
 	private User user;
+	private Stage stage1;
 	
 	//Attributes
 	/** A Text Field that it's gonna the get the name*/
@@ -39,6 +42,9 @@ public class RegisterController {
     /**A Text Field that it's gonna the get the nickname */
     @FXML
     private PasswordField txtPassword;
+    
+    @FXML
+    private Button register;
     
     //Methods
     /**
@@ -64,8 +70,10 @@ public class RegisterController {
     		alert.setTitle("User created!");
     		alert.setHeaderText(null);
     		alert.setContentText("Your user has been created succesfully!");
-
     		alert.showAndWait();
+    		
+    		stage1 = (Stage) register.getScene().getWindow();
+    	     stage1.close();
     		
     	}catch(RequiredFieldsException e2) {
     		System.out.println("A wild exception appeared! What are you gonna do?");

@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

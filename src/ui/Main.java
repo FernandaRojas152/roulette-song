@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -18,6 +19,9 @@ import javafx.stage.Stage;
 public class Main extends Application{
 	private PrincipalWindowController principal;
 	
+	public Main() {
+		principal= new PrincipalWindowController();
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -28,6 +32,7 @@ public class Main extends Application{
 		Scene scene= new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("music.png")));
 		primaryStage.setTitle("Roulette song");
 		primaryStage.setResizable(false);
 		primaryStage.show();
