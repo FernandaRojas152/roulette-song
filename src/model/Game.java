@@ -120,6 +120,11 @@ public class Game {
 			}else {
 				throw new RequiredFieldsException();
 			}
+			
+			/**if(user.getNickname().compareTo(user.getNickname())>=0) {
+				
+			}
+			*/
 		}
 	}
 	
