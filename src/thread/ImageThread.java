@@ -42,11 +42,12 @@ public class ImageThread extends Thread{
 			image.rotate();
 			game.updateImage();
 			try {
-				sleep(10);
+				sleep(3);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
 	}
+	
+	
 }

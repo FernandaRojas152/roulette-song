@@ -35,7 +35,7 @@ public class User implements Comparable<User>{
 		this.nickname = nickname;
 		this.gender = gender;
 		this.password = password;
-		points= 10;
+		points=10;
 	}
 	
 	/**
@@ -124,17 +124,20 @@ public class User implements Comparable<User>{
 	 * @return
 	 */
 	public int acumulatePoints(int p) {
-		p= points;
-		if (p==1) {
-			return 1;
-		} else {
-			return acumulatePoints(p-1)+p;
-		}
+		points= points+p;
+		return points;
 	}
 
 	@Override
 	public int compareTo(User u){
 		return this.getNickname().compareToIgnoreCase(u.getNickname());
+	}
+	
+	public static void main(String[] args) {
+		User user1= new User("fer", "f", "f", "1234");
+		user1.acumulatePoints(10);
+		System.out.println(user1.getPoints());
+		
 	}
 	
 }
