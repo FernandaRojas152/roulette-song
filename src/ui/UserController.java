@@ -3,9 +3,11 @@ package ui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import model.User;
 
 public class UserController {
-
+	private User user;
+	
     @FXML
     private ImageView image;
 
@@ -26,5 +28,13 @@ public class UserController {
 
     @FXML
     private Label gender;
+
+	public UserController() {
+	}
+    
+	
+    public void showUserInformation() {
+    	
+    }
 
 }
