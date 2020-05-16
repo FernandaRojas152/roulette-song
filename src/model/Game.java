@@ -17,12 +17,13 @@ import customExceptions.UserDoesntExistException;
  * Class Game
  */
 public class Game {
-	/** */
+	/** association of type arraylist with object of type users*/
 	private ArrayList<User> users;
 	
+	public static boolean s= false;
 	//Methods
 	/**
-	 * 
+	 * Constructor's method
 	 */
 	public Game() {
 		users= new ArrayList<User>();

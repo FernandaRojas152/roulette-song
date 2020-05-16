@@ -5,15 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.PrincipalWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.PrincipalWindowController">
    <children>
-      <Button layoutX="471.0" layoutY="44.0" mnemonicParsing="false" onAction="#signIn" text="Sign in" />
-      <Button layoutX="471.0" layoutY="137.0" mnemonicParsing="false" onAction="#logIn" text="Log in" />
-      <Button layoutX="471.0" layoutY="260.0" mnemonicParsing="false" onAction="#play" text="Play" />
-      <ImageView fitHeight="361.0" fitWidth="405.0" layoutX="42.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="526.0" layoutY="41.0" mnemonicParsing="false" onAction="#signIn" text="Sign in" />
+      <Button layoutX="530.0" layoutY="137.0" mnemonicParsing="false" onAction="#logIn" text="Log in" />
+      <Button layoutX="536.0" layoutY="287.0" mnemonicParsing="false" onAction="#play" text="Play" />
+      <ImageView fitHeight="361.0" fitWidth="405.0" layoutX="105.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@536082.png" />
          </image>
       </ImageView>
+      <Button layoutX="14.0" layoutY="372.0" mnemonicParsing="false" onAction="#userProfile" text="Users" />
    </children>
 </AnchorPane>

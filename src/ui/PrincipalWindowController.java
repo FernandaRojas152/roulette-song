@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 public class PrincipalWindowController {
 	
+	public PrincipalWindowController() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public void initialize() {
 	}
 
@@ -49,4 +53,14 @@ public class PrincipalWindowController {
     	stage.setScene(scene);
     	stage.show();
     }
+    
+    @FXML
+	void userProfile(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("User.fxml"));
+		Scene scene= new Scene(fxmlLoader.load());
+		Stage stage= new Stage();
+		stage.setTitle("User profile");
+		stage.setScene(scene);
+		stage.show();
+	}
 }

@@ -2,17 +2,20 @@ package model;
 /**
  * @author Fernanda
  * @version April 30th 2020
+ * Class MusicLibrary
  */
 public class MusicLibrary{
 	//Attributes
 	/** first song of the doubly linked list*/
 	private Song first;
+	/** last song of the doubly linked list*/
 	private Song last;
+	/** list's size*/
 	private int size;
 	
 	//Methods
 	/**
-	 * 
+	 * Constructor's method
 	 */
 	public MusicLibrary() {
 		first= last = null;
