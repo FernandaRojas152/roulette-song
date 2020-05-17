@@ -140,12 +140,20 @@ public class User implements Serializable, Comparable<User>{
 	public int compareTo(User u){
 		return this.getNickname().compareToIgnoreCase(u.getNickname());
 	}
+
+	@Override
+	public String toString() {
+		return "Name: "+name+"Nickname: "+nickname+"Gender: "+gender+ "Password: "+password;
+	}
 	
-	public static void main(String[] args) {
+	/**public static void main(String[] args) {
 		User user1= new User("fer", "f", "f", "1234");
 		user1.acumulatePoints(10);
 		System.out.println(user1.getPoints());
 		
 	}
+	*/
+	
+	
 	
 }

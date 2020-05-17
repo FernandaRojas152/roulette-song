@@ -24,7 +24,7 @@ public class Game {
 	private static User user;
 	public static final String FILE = "resources/data/gameDate.txt";
 	public static boolean s= false;
-	
+
 	//Methods
 	/**
 	 * Constructor's method
@@ -32,7 +32,7 @@ public class Game {
 	public Game() {
 		users= new ArrayList<User>();
 	}
-	
+	/** getters and setters*/ 
 	public User getUser() {
 		return user;
 	}
@@ -41,22 +41,14 @@ public class Game {
 		this.user = user;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
 	public ArrayList<User> getUsers() {
 		return users;
 	}
-	
-	/**
-	 * 
-	 * @param users
-	 */
-	public void setUsers(ArrayList<User> users) {
-		this.users = users;
+
+	public static void setUsers(ArrayList<User> user) {
+		users = user;
 	}
-	
+
 	/**
 	 * This method will search if the userExists already has been registered and exists in the game.
 	 * @param nickname -name that the user has and it's going to be the one that it's going to be
@@ -117,7 +109,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 * This method will add a user to the 
 	 * <b> pre: </b>
 	 * <b> post: </b>
 	 * @param user
@@ -133,38 +125,36 @@ public class Game {
 			}else {
 				throw new RequiredFieldsException();
 			}
-			
+
 			/**if(user.getNickname().compareTo(user.getNickname())>=0) {
-				
+
 			}
-			*/
+			 */
 		}
 	}
-	
+
 	/**
 	 * 
 	 */
 	public static void save() throws IOException, FileNotFoundException{
-		user= new User("fernanda", "fernanda", "fernanda", "fernanda");
+		//users.add(new User("Fernanda", "Fernanda", "Femenine", "Fernanda"));
 		File myFile = new File(FILE);
 		ObjectOutputStream oS= null;
-			oS= new ObjectOutputStream(new FileOutputStream(myFile));
-			oS.writeObject(user);
-			oS.close();
+		oS= new ObjectOutputStream(new FileOutputStream(myFile));
+		oS.writeObject(users);
+		oS.close();
 	}
-	
+
 	/**
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 * @throws ClassNotFoundException 
 	 * 
 	 */
-	public void readData() throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static void readData() throws FileNotFoundException, IOException, ClassNotFoundException {
 		File myFile = new File(FILE);
 		ObjectInputStream oS= null;
 		ArrayList<User> us= null;
-		
-		
 		if (myFile.exists()) {
 			oS = new ObjectInputStream(new FileInputStream(myFile));
 			us= (ArrayList<User>) oS.readObject();
@@ -173,7 +163,7 @@ public class Game {
 			System.out.println(us);
 		}
 	}
-	
+
 	/**
 	 * sort users by insertion
 	 */
@@ -186,8 +176,10 @@ public class Game {
 			}
 		}
 	}
-	
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		save();
+
+	/**public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+		Game game= new Game();
+		game.save();
 	}
+	*/
 }
