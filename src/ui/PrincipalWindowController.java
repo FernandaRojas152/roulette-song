@@ -9,8 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Game;
 
 public class PrincipalWindowController {
+	private Game game;
 	
 	public PrincipalWindowController() {
 		// TODO Auto-generated constructor stub

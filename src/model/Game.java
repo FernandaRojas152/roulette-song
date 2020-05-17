@@ -1,6 +1,8 @@
 package model;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,9 +20,11 @@ import customExceptions.UserDoesntExistException;
  */
 public class Game {
 	/** association of type arraylist with object of type users*/
-	private ArrayList<User> users;
-	
+	private static ArrayList<User> users;
+	private static User user;
+	public static final String FILE = "resources/data/gameDate.txt";
 	public static boolean s= false;
+	
 	//Methods
 	/**
 	 * Constructor's method
@@ -29,6 +33,14 @@ public class Game {
 		users= new ArrayList<User>();
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	/**
 	 * 
 	 * @return
@@ -132,62 +144,33 @@ public class Game {
 	/**
 	 * 
 	 */
-	public void save() {
-		FileOutputStream fS= null;
+	public static void save() throws IOException, FileNotFoundException{
+		user= new User("fernanda", "fernanda", "fernanda", "fernanda");
+		File myFile = new File(FILE);
 		ObjectOutputStream oS= null;
-		
-		try {
-			fS = new FileOutputStream("./data/gameData.dat");
-			oS= new ObjectOutputStream(fS);
-			
-			oS.writeObject(users);
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}finally {
-			try {
-				if(users!=null) {
-					fS.close();
-				}
-				if(oS!=null) {
-					oS.close();
-				}
-			} catch (IOException e2) {
-				System.out.println(e2.getMessage());
-			}
-		}
+			oS= new ObjectOutputStream(new FileOutputStream(myFile));
+			oS.writeObject(user);
+			oS.close();
 	}
 	
 	/**
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 * @throws ClassNotFoundException 
 	 * 
 	 */
-	public void readData() {
-		FileInputStream fS= null;
+	public void readData() throws FileNotFoundException, IOException, ClassNotFoundException {
+		File myFile = new File(FILE);
 		ObjectInputStream oS= null;
-		
 		ArrayList<User> us= null;
 		
-		try {
-			fS = new FileInputStream("./data/gameData.dat");
-			oS= new ObjectInputStream(fS);
+		
+		if (myFile.exists()) {
+			oS = new ObjectInputStream(new FileInputStream(myFile));
 			us= (ArrayList<User>) oS.readObject();
 			setUsers(us);
-			
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}finally {
-			try {
-				if(fS!=null) {
-					fS.close();
-				}
-				
-				if(oS!=null) {
-					oS.close();
-				}
-			} catch (IOException e2) {
-				System.out.println(e2.getMessage());
-			}
-			
+			oS.close();
+			System.out.println(us);
 		}
 	}
 	
@@ -202,5 +185,9 @@ public class Game {
 				users.set(j-1,temp);
 			}
 		}
+	}
+	
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		save();
 	}
 }

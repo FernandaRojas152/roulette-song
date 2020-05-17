@@ -84,46 +84,6 @@ public class GameController {
 		i.setSpin(false);
     }
 	
-	public void openList() {
-		try {
-            BufferedReader tec = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\config"));
-            String aux = tec.readLine();
-            if (aux.equals("Si")) {
-                aux = tec.readLine();
-                if (!aux.equals("vacio")) {
-                    //cargarLista(aux);
-                }
-            } else {
-                //cargarListaInicio.setSelected(false);
-            }
-        } catch (Exception e) {
-        }
-	}
-	
-	 /**public void cargarLista(String ruta) {
-	        try {
-	            FileInputStream fis = new FileInputStream(new File(ruta));
-	            BufferedReader tec = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
-	            String input[];
-	            tec.readLine();
-
-	            while (tec.ready()) {
-	                input = tec.readLine().split("<");
-	                System.out.println(input[0] + " , " + input[1]);
-	                list.insertar(input[0], input[1]);
-	                lista_modelo.addElement(input[0]);
-	            }
-	            ultimaLista = ruta;
-	            cambios = false;
-	        } catch (FileNotFoundException ex) {
-	            JOptionPane.showMessageDialog(null, "Ha ocurrido un error\nal cargar la lista!!!", "alerta", 1);
-	        } catch (IOException ex) {
-	            JOptionPane.showMessageDialog(null, "Ha ocurrido un error!!!", "alerta", 1);
-	        }
-	        lista_can.setModel(lista_modelo);
-	    }
-	    */
-	
 	@FXML
     void answer(ActionEvent event) {
 

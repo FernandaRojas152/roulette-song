@@ -1,5 +1,8 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import customExceptions.RequiredFieldsException;
 import customExceptions.UserAlreadyExistsException;
 import javafx.application.Platform;
@@ -87,6 +90,14 @@ public class RegisterController {
     	        Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.OK);
     	        dialog.show();
     	    });
+    	}
+    	
+    	try {
+    		game.save();
+    	}catch (FileNotFoundException e2) {
+    		e2.getMessage();
+    	}catch(IOException e) {
+    		e.getMessage();
     	}
     }
     

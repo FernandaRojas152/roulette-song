@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * @author Fernanda
  * @version April 24th 2020
  * Class User
  */
-public class User implements Comparable<User>{
+public class User implements Serializable, Comparable<User>{
 	//Attributes
 	/** String that represents the name of the player*/
 	private String name;
@@ -34,6 +36,12 @@ public class User implements Comparable<User>{
 		this.name = name;
 		this.nickname = nickname;
 		this.gender = gender;
+		this.password = password;
+		points=10;
+	}
+	
+	public User(String nickname, String password) {
+		this.nickname = nickname;
 		this.password = password;
 		points=10;
 	}
