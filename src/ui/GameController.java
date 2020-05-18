@@ -43,7 +43,7 @@ public class GameController {
 		updateImage();
 	}
 	
-	@FXML
+	/**@FXML
 	void gameModeConfig(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("GameModeConfiguration.fxml"));
 		Scene scene= new Scene(fxmlLoader.load());
@@ -53,7 +53,8 @@ public class GameController {
 		stage.show();
 
 	}
-
+	*/
+	
 	@FXML
 	void songConfig(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SongsConfiguration.fxml"));
@@ -64,6 +65,16 @@ public class GameController {
 		stage.show();
 
 	}
+	
+	  @FXML
+	    void buySong(ActionEvent event) throws IOException {
+		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chooseSong.fxml"));
+			Scene scene= new Scene(fxmlLoader.load());
+			Stage stage= new Stage();
+			stage.setTitle("Game mode");
+			stage.setScene(scene);
+			stage.show();
+	    }
 
 	@FXML
 	void spin(ActionEvent event) throws IOException {

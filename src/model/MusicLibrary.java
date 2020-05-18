@@ -7,7 +7,7 @@ package model;
 public class MusicLibrary{
 	//Attributes
 	/** first song of the doubly linked list*/
-	private Song first;
+	public Song first;
 	/** last song of the doubly linked list*/
 	private Song last;
 	/** list's size*/
@@ -37,14 +37,14 @@ public class MusicLibrary{
 	 * @param artist
 	 * @param fileP
 	 */
-	public void addSong(String name, String artist, String fileP) {
-		Song temp= new Song(name, artist, fileP);
+	public void addSong(String name, String fileP) {
+		Song temp= new Song(name, fileP);
 		if(isEmpty()==true) {
 			first= temp;
-			last= first;
+			last= temp;
 		}else {
-			temp.setLast(last);
-			last.setNext(temp);
+			temp.prev= last;
+			last.next= temp;
 			last= temp;
 		}
 		size++;
@@ -96,11 +96,11 @@ public class MusicLibrary{
 	 * @param fileP
 	 * @return
 	 */
-	public boolean search(String name, String artist, String fileP) {
+	public boolean search(String name,String fileP) {
 		boolean finded= false;
 		Song temp= first;
 		while (temp!= null) {
-			if (temp.getSongName().equals(name) && temp.getArtist().equals(artist) && temp.getFileP().equals(fileP)) {
+			if (temp.getSongName().equals(name) && temp.getFileP().equals(fileP)) {
 				finded= true;
 			}
 			temp= temp.getNext();

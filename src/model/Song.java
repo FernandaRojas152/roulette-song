@@ -8,15 +8,13 @@ package model;
 public class Song {
 	//Attributes
 	/** */
-	private Song last;
+	public Song prev;
 	/** */
-	private Song next;
+	public Song next;
 	/** */
-	private String songName;
+	public String songName;
 	/** */
-	private String artist;
-	/** */
-	private String fileP;
+	public String fileP;
 	
 	/**
 	 * 
@@ -24,9 +22,8 @@ public class Song {
 	 * @param artist
 	 * @param fileP
 	 */
-	public Song(String songName, String artist, String fileP) {
+	public Song(String songName, String fileP) {
 		this.songName= songName;
-		this.artist= artist;
 		this.fileP= fileP;
 	}
 	
@@ -50,16 +47,16 @@ public class Song {
 	 * 
 	 * @return
 	 */
-	public Song getLast() {
-		return last;
+	public Song getprev() {
+		return prev;
 	}
 	
 	/**
 	 * 
-	 * @param last
+	 * @param prev
 	 */
-	public void setLast(Song last) {
-		this.last = last;
+	public void setprev(Song prev) {
+		this.prev = prev;
 	}
 	
 	/**
@@ -92,21 +89,5 @@ public class Song {
 	 */
 	public void setSongName(String songName) {
 		this.songName = songName;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public String getArtist() {
-		return artist;
-	}
-	
-	/**
-	 * 
-	 * @param artist
-	 */
-	public void setArtist(String artist) {
-		this.artist = artist;
 	}
 }

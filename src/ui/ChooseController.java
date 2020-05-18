@@ -1,9 +1,14 @@
 package ui;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.List;
+
+import customExceptions.SongAlreadyExistsException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,42 +27,55 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class ChooseController {
 	private MusicLibrary music;
 	private Song song=null;
+
+	private boolean change= false;
 	@FXML
 	private ListView list;
 
 	@FXML
 	private Button add;
-	
+
 	@FXML
 	private TextField text;
 
+	public ChooseController() {
+		music= new MusicLibrary();
+	}
 	/**
 	 * This will add the song that the user chooses
 	 * @param event
 	 * @throws FileNotFoundException
+	 * @throws SongAlreadyExistsException 
 	 */
 	@FXML
-	void addSong(ActionEvent event)throws FileNotFoundException{ 
+	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{ 
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Resource File");
 		file.getExtensionFilters().addAll(
 				new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"));
-		File selectedfile = file.showOpenDialog(null);
+		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
-			//File files[]= file.showSaveDialog(null);
-			list.getItems().add(selectedfile.getName());
+			for(int i=0; i< selectedfile.size(); i++) {
+				list.getItems().add(selectedfile.get(i).getName());
+				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
+					throw new SongAlreadyExistsException();
+				}
+				System.out.println(selectedfile.get(i).getName());
+				System.out.println(selectedfile.get(i).getPath());
+				music.addSong(selectedfile.get(i).getName(), selectedfile.get(i).getPath());
+			}
 		}else {
 			try {
 				throw new FileNotFoundException("File not found.");
 			} catch (Exception e) {
-				 Platform.runLater(() -> {
-		    	        Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.OK);
-		    	        dialog.show();
-		    	    });
+				Platform.runLater(() -> {
+					Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.OK);
+					dialog.show();
+				});
 			}
 		}
 	}
-	
+
 	/**public String createList() {
         //String n = JOptionPane.showInputDialog("digite el nombre de la lista");
         String n= text.getText();
@@ -79,27 +97,27 @@ public class ChooseController {
         }
         return save.getAbsolutePath();
     }
-    */
+	 */
 	/**
 	 * 
-	*/
+	 */
 	public void openList() {
 		try {
-            BufferedReader tec = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\config"));
-            String aux = tec.readLine();
-            if (aux.equals("Si")) {
-                aux = tec.readLine();
-                if (!aux.equals("vacio")) {
-                    //cargarLista(aux);
-                }
-            } else {
-                //cargarListaInicio.setSelected(false);
-            }
-        } catch (Exception e) {
-        }
+			BufferedReader tec = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\config"));
+			String aux = tec.readLine();
+			if (aux.equals("Si")) {
+				aux = tec.readLine();
+				if (!aux.equals("vacio")) {
+					//cargarLista(aux);
+				}
+			} else {
+				//cargarListaInicio.setSelected(false);
+			}
+		} catch (Exception e) {
+		}
 	}
-	
-	 /**public void cargarLista(String ruta) {
+
+	/**public void cargarLista(String ruta) {
 	        try {
 	            FileInputStream fis = new FileInputStream(new File(ruta));
 	            BufferedReader tec = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
@@ -121,8 +139,38 @@ public class ChooseController {
 	        }
 	        lista_can.setModel(lista_modelo);
 	    }
-	    */
-	
-	
+	 */
+
+	public void saveData(String d) {
+		try {
+			BufferedWriter bW = new BufferedWriter(new FileWriter(d));
+			bW.write("\r\n");
+
+			Song aux = music.first;
+			while (aux != null) {
+				bW.append(aux.getSongName() + ";" + aux.getFileP() + "\r\n");
+				aux = aux.getNext();
+			}
+
+			bW.close();
+			change= false;
+		} catch (Exception e) {
+			Platform.runLater(() -> {
+				Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.OK);
+				dialog.show();
+			});
+		}
+
+	}
+
+	@FXML
+	void loadFile(ActionEvent event) {
+
+	}
+
+	@FXML
+	void saveSongs(ActionEvent event) {
+
+	}
 
 }
