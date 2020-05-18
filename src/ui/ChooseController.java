@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
-
 import customExceptions.SongAlreadyExistsException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -25,9 +24,11 @@ import model.Song;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ChooseController {
+	//associations
 	private MusicLibrary music;
 	private Song song=null;
-
+	
+	//attributes
 	private boolean change= false;
 	@FXML
 	private ListView list;
@@ -37,22 +38,28 @@ public class ChooseController {
 
 	@FXML
 	private TextField text;
-
+	
+	//Methods
+	/**
+	 * Constructor's method
+	 */
 	public ChooseController() {
 		music= new MusicLibrary();
 	}
+	
 	/**
-	 * This will add the song that the user chooses
+	 * This will add the song that the user chooses to a listview and the doubly linked list.
 	 * @param event
-	 * @throws FileNotFoundException
-	 * @throws SongAlreadyExistsException 
+	 * @throws FileNotFoundException- It's thrown when a user tries to add an audio file but it's not found or
+	 * it's empty.
+	 * @throws SongAlreadyExistsException -It's thrown when the user tries to add a song with the same name and the same
+	 * file path.
 	 */
 	@FXML
 	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{ 
 		FileChooser file= new FileChooser();
-		file.setTitle("Open Resource File");
-		file.getExtensionFilters().addAll(
-				new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"));
+		file.setTitle("Open Song File");
+		file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"));
 		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
 			for(int i=0; i< selectedfile.size(); i++) {
@@ -60,9 +67,9 @@ public class ChooseController {
 				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
 					throw new SongAlreadyExistsException();
 				}
+				music.addSong(selectedfile.get(i).getName(), selectedfile.get(i).getPath());
 				System.out.println(selectedfile.get(i).getName());
 				System.out.println(selectedfile.get(i).getPath());
-				music.addSong(selectedfile.get(i).getName(), selectedfile.get(i).getPath());
 			}
 		}else {
 			try {
@@ -169,8 +176,15 @@ public class ChooseController {
 	}
 
 	@FXML
-	void saveSongs(ActionEvent event) {
-
+	void saveSongs(ActionEvent event) throws NullPointerException{
+		if(music.isEmpty()) {
+			Platform.runLater(() -> {
+				Alert dialog = new Alert(AlertType.ERROR, "List is Empty!", ButtonType.OK);
+				dialog.show();
+			});
+			return;
+		}
+		//saveData(d);
 	}
 
 }
