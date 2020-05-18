@@ -30,6 +30,8 @@ public class ChooseController {
 	
 	//attributes
 	private boolean change= false;
+	public static final String PATH = "resources/data/songData.txt";
+	
 	@FXML
 	private ListView list;
 
@@ -184,7 +186,8 @@ public class ChooseController {
 			});
 			return;
 		}
-		//saveData(d);
+		System.out.println("bien");
+		saveData(PATH);
 	}
 
 }
