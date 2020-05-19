@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ChooseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.GameController">
    <children>
       <Arc fill="#ddb1e4" layoutX="56.0" layoutY="147.0" length="270.0" radiusX="49.0" radiusY="51.0" startAngle="-3.2" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
       <ListView fx:id="list" layoutX="260.0" layoutY="24.0" prefHeight="317.0" prefWidth="236.0" />

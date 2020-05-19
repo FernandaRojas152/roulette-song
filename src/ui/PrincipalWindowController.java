@@ -15,7 +15,7 @@ public class PrincipalWindowController {
 	private Game game;
 	
 	public PrincipalWindowController() {
-		// TODO Auto-generated constructor stub
+		game= new Game();
 	}
 	
 	public void initialize() {

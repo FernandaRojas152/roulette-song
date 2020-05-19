@@ -22,6 +22,44 @@ public class MusicLibrary{
 		size= 0;
 	}
 	
+	
+	
+	public Song getFirst() {
+		return first;
+	}
+
+
+
+	public void setFirst(Song first) {
+		this.first = first;
+	}
+
+
+
+	public Song getLast() {
+		return last;
+	}
+
+
+
+	public void setLast(Song last) {
+		this.last = last;
+	}
+
+
+
+	public int getSize() {
+		return size;
+	}
+
+
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+
+
 	/**
 	 * 
 	 * @return

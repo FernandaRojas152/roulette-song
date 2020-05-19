@@ -5,7 +5,7 @@ package model;
  * @version April 26th 2020
  * Class Song
  */
-public class Song {
+public class Song implements Comparable<Song>{
 	//Attributes
 	/** */
 	public Song prev;
@@ -89,5 +89,18 @@ public class Song {
 	 */
 	public void setSongName(String songName) {
 		this.songName = songName;
+	}
+
+	@Override
+	public int compareTo(Song song) {
+		int c=0;
+		if(this.songName.compareToIgnoreCase(song.songName)> 0) {
+			c=1;
+		}else if(this.songName.compareToIgnoreCase(song.songName) <0) {
+			c=-1;
+		}else{
+			c=0;
+		}
+		return c;
 	}
 }

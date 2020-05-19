@@ -22,6 +22,7 @@ public class Game {
 	/** association of type arraylist with object of type users*/
 	private static ArrayList<User> users;
 	private static User user;
+	private Song first;
 	public static final String FILE = "resources/data/gameDate.txt";
 	public static boolean s= false;
 
@@ -31,6 +32,7 @@ public class Game {
 	 */
 	public Game() {
 		users= new ArrayList<User>();
+		first= null;
 	}
 	/** getters and setters*/ 
 	public User getUser() {
@@ -176,10 +178,46 @@ public class Game {
 			}
 		}
 	}
+	
+	/**
+	 * sort songs by bubble sort
+	 */
+	public void sortSongs() {
+		if(first!= null) {
+			boolean sorted = true;
+			while(sorted) {
+				Song temp= first;
+				sorted= false;
+				while(temp.getNext()!= first) {
+					Song next= temp.getNext();
+					if(temp.compareTo(next)>0) {
+						if(temp.getprev()!= null) {
+							temp.getprev().setNext(next);
+						}
+						if(next.getNext()!= null) {
+							next.getNext().setprev(temp);
+						}
+						temp.setNext(next.getNext());
+						next.setprev(temp.getprev());
+						temp.setprev(next);
+						next.setNext(temp);
+						if(temp== first) {
+							first= next;
+						}
+						sorted= true;
+					}else {
+						temp= temp.getNext();
+					}
+				}
+			}
+		}
+	}
 
 	/**public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		Game game= new Game();
 		game.save();
 	}
 	*/
+	
+	
 }
