@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import customExceptions.RequiredFieldsException;
 import customExceptions.UserAlreadyExistsException;
@@ -23,6 +24,7 @@ public class Game {
 	private static ArrayList<User> users;
 	private static User user;
 	private Song first;
+	private Artist root;
 	public static final String FILE = "resources/data/gameDate.txt";
 	public static boolean s= false;
 
@@ -51,6 +53,12 @@ public class Game {
 		users = user;
 	}
 
+	public Artist getRoot() {
+		return root;
+	}
+	public void setRoot(Artist root) {
+		this.root = root;
+	}
 	/**
 	 * This method will search if the userExists already has been registered and exists in the game.
 	 * @param nickname -name that the user has and it's going to be the one that it's going to be
@@ -212,12 +220,91 @@ public class Game {
 			}
 		}
 	}
-
-	/**public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-		Game game= new Game();
-		game.save();
+	
+	/**
+	 * sort by selection
+	 */
+	public void sortArtist() {
+		
 	}
-	*/
+	
+	/**
+	 * private method of adding an artist using recursion
+	 * @param a an artist
+	 * @param p root of class artist.
+	 */
+	private void addArtist(Artist a, Artist p) {
+		if(p== null) {
+			this.setRoot(a);
+		}else if(a.getRecordCompany().compareTo(p.getRecordCompany())<=0) {
+			if(p.getLeft()== null) {
+				p.setLeft(a);
+			}else {
+				addArtist(a, p.getLeft());
+			}
+		}else {
+			if(p.getRight()== null) {
+				p.setRight(a);
+			}else {
+				addArtist(a, p.getRight());
+			}
+		}
+	}
+	
+	/**
+	 * public method to add an artist in the binary search tree
+	 * @param a -artist that's gonna be added
+	 */
+	public void addArtist(Artist a) {
+		addArtist(a, this.root);
+	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @return
+	 */
+	public List<Artist> preOrderSort(Artist a){
+		List<Artist> artistSorted= new ArrayList<Artist>();
+		if(a!=null) {
+			artistSorted.add(a);
+			if(a.getLeft()!=null) {
+				preOrderSort(a.getLeft());
+			}
+			if(a.getRight()!=null) {
+				preOrderSort(a.getRight());
+			}
+		}
+		return artistSorted;
+	}
+	
+	/**
+	 * 
+	 * @param a
+	 * @return
+	 */
+	public List<Artist> inOrderSort(Artist a){
+		List<Artist> artistSorted= new ArrayList<Artist>();
+		if(a!= null) {
+			inOrderSort(a.getLeft());
+			artistSorted.add(a);
+			inOrderSort(a.getRight());
+		}
+		return artistSorted;
+	}
 	
 	
+	public List<Artist> posOrderSort(Artist a){
+		List<Artist> artistSorted= new ArrayList<Artist>();
+		if(a!=null) {
+			if(a.getLeft()!=null) {
+				posOrderSort(a.getLeft());
+			}
+			if(a.getRight()!=null) {
+				posOrderSort(a.getRight());
+			}
+			artistSorted.add(a);
+		}
+		return artistSorted;
+	}
 }
