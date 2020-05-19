@@ -11,6 +11,7 @@ class UserTest {
 	public void stageUp1() {
 		user= new User("Fernanda", "fernandarojas152", "femenine", "fernanda");
 		user.acumulatePoints(5);
+		
 	}
 	
 	/** TESTS*/

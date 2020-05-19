@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.List;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -51,7 +52,7 @@ public class GameController {
 	private Player player;
 	/** association with the image that's going to be rotating*/
 	private Image i;
-	
+
 	//attributes
 	private boolean change= false;
 	private boolean stop= false;
@@ -66,11 +67,14 @@ public class GameController {
 	private Button add;
 
 	@FXML
+	private Button stopButton;
+
+	@FXML
 	private TextField text;
-	
+
 	@FXML
 	private ImageView roulette;
-	
+
 	@FXML
 	private RadioButton random;
 
@@ -82,7 +86,7 @@ public class GameController {
 
 	@FXML
 	private RadioButton byArtist;
-	
+
 	//methods
 	/**
 	 * Constructor's method
@@ -94,7 +98,24 @@ public class GameController {
 		song=null;
 		updateImage();
 	}
-
+	
+	public void init() {
+		stopButton.setOnAction(buttonHandler);
+	}
+	
+	
+	EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
+	    @Override
+	    public void handle(ActionEvent event) {
+	    	stop(event);
+	    }
+	};
+	
+	/**
+	 * Goes to the next window to add(buy) a new song
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void buySong(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chooseSong.fxml"));
@@ -104,7 +125,12 @@ public class GameController {
 		stage.setScene(scene);
 		stage.show();
 	}
-
+	
+	/**
+	 * This method will spin the image that represents a roulette
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	void spin(ActionEvent event) throws IOException {
 		ImageThread it= new ImageThread(i, this);
@@ -119,14 +145,15 @@ public class GameController {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
 	
-	
-       
-
+	/**
+	 * When the user knows the answer, he can clic on this button and answer the name of the song
+	 * @param event
+	 */
 	@FXML
 	void answer(ActionEvent event) {
-
+		
 	}
-	
+
 	//associations
 
 
@@ -258,8 +285,8 @@ public class GameController {
 		System.out.println("bien");
 		saveData(PATH);
 	}
-	
-	
+
+
 	/**
 	 * 
 	 * @param event
@@ -270,35 +297,38 @@ public class GameController {
 		//loadSongs(PATH);
 		
 		stop = true;
-		
-        if (music.isEmpty()) {
-            System.out.println("No hay canciones");
-        } else {
-            if (song == null) {
-                song = music.first;
-            }
-            try {
-                if (x == 0) {
-                    player.control.open(new URL("file:///" + song.fileP));
-                    player.control.play();
-                    System.out.println("se inicia");
-                    x = 1;
-                } else {
-                    if (x == 1) {
-                        player.control.pause();
-                        System.out.println("se pausa!!!");
-                        x = 2;
-                    }
-                }
-            } catch (BasicPlayerException ex) {
-               ex.getMessage();
-                x = 0;
-            } catch (MalformedURLException ex) {
-                ex.getMessage();
-                x = 0;
-            }
-            stop = false;
-        }
-	}
 
+		if (music.isEmpty()) {
+			System.out.println("No hay canciones");
+		} else {
+			if (song == null) {
+				song = music.first;
+			}
+			try {
+				if (x == 0) {
+					player.control.open(new URL("file:///" + song.fileP));
+					player.control.play();
+					System.out.println("se inicia");
+					x = 1;
+				} else {
+					if (x == 1) {
+						player.control.pause();
+						System.out.println("se pausa!!!");
+						x = 2;
+					}
+				}
+			} catch (BasicPlayerException ex) {
+				ex.getMessage();
+				x = 0;
+			} catch (MalformedURLException ex) {
+				ex.getMessage();
+				x = 0;
+			}
+			stop = false;
+		}
+
+	}
+	
+	public void playSong() {
+			}
 }

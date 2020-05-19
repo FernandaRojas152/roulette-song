@@ -131,9 +131,18 @@ public class User implements Serializable, Comparable<User>{
 	 * @param p
 	 * @return
 	 */
-	public int acumulatePoints(int p) {
+	/**public int acumulatePoints(int p) {
 		points= points+p;
 		return points;
+	}
+	*/
+	
+	public int acumulatePoints(int p) {
+		if (p==1) {
+			return 1;
+		} else {
+			return acumulatePoints(p-1)+p;
+		}
 	}
 
 	@Override

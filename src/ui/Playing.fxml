@@ -26,7 +26,7 @@
             <Image url="@roulette.png" />
          </image>
       </ImageView>
-      <Button layoutX="20.0" layoutY="362.0" mnemonicParsing="false" onAction="#stop" text="Stop">
+      <Button fx:id="stopButton" layoutX="20.0" layoutY="362.0" mnemonicParsing="false" onAction="#stop" text="Stop">
          <font>
             <Font size="18.0" />
          </font>
