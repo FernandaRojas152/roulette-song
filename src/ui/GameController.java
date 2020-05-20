@@ -38,6 +38,8 @@ import model.MusicLibrary;
 import model.Player;
 import model.Song;
 import thread.ImageThread;
+import util.SoundPlayer;
+import util.SoundPlayer;
 import customExceptions.SongAlreadyExistsException;
 
 /**
@@ -295,40 +297,13 @@ public class GameController {
 	void stop(ActionEvent event) {
 		i.setSpin(false);
 		//loadSongs(PATH);
-		
 		stop = true;
-
-		if (music.isEmpty()) {
-			System.out.println("No hay canciones");
-		} else {
-			if (song == null) {
-				song = music.first;
-			}
-			try {
-				if (x == 0) {
-					player.control.open(new URL("file:///" + song.fileP));
-					player.control.play();
-					System.out.println("se inicia");
-					x = 1;
-				} else {
-					if (x == 1) {
-						player.control.pause();
-						System.out.println("se pausa!!!");
-						x = 2;
-					}
-				}
-			} catch (BasicPlayerException ex) {
-				ex.getMessage();
-				x = 0;
-			} catch (MalformedURLException ex) {
-				ex.getMessage();
-				x = 0;
-			}
-			stop = false;
-		}
+		
+		SoundPlayer.addSound("Test", "/songs/backgroundMusic.wav");
+		SoundPlayer.startSound("Test");
 
 	}
 	
 	public void playSong() {
-			}
+	}
 }
