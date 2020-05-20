@@ -39,7 +39,6 @@ import model.Player;
 import model.Song;
 import thread.ImageThread;
 import util.SoundPlayer;
-import util.SoundPlayer;
 import customExceptions.SongAlreadyExistsException;
 
 /**
@@ -136,7 +135,7 @@ public class GameController {
 	@FXML
 	void spin(ActionEvent event) throws IOException {
 		ImageThread it= new ImageThread(i, this);
-		i.setSpin(true);		
+		i.setSpin(true);
 		it.start();
 	}
 
@@ -296,12 +295,9 @@ public class GameController {
 	@FXML
 	void stop(ActionEvent event) {
 		i.setSpin(false);
-		//loadSongs(PATH);
-		stop = true;
-		
+	
 		SoundPlayer.addSound("Test", "/songs/backgroundMusic.wav");
 		SoundPlayer.startSound("Test");
-
 	}
 	
 	public void playSong() {
