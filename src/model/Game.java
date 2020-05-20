@@ -25,6 +25,7 @@ public class Game {
 	private static User user;
 	private Song first;
 	private Artist root;
+	private Genre next;
 	public static final String FILE = "resources/data/gameDate.txt";
 	public static boolean s= false;
 
@@ -35,6 +36,7 @@ public class Game {
 	public Game() {
 		users= new ArrayList<User>();
 		first= null;
+		next= null;
 	}
 	/** getters and setters*/ 
 	public User getUser() {
@@ -224,7 +226,41 @@ public class Game {
 	/**
 	 * sort by selection
 	 */
-	public void sortArtist() {
+	public void sortGenre(Genre temp) {
+		Genre r= null;
+		Genre current, prev, aux, m;
+		while(temp!=null) {
+			current= temp;
+			prev= null;
+			aux= temp;
+			m= prev;
+			while(current.getNext()!=null) {
+				prev= current;
+				current= current.getNext();
+				if(current.getDuration()<aux.getDuration()) {
+					m= prev;
+					aux= current;
+				}
+			}
+			Genre mini= new Genre(aux.getDuration());
+			if(r== null) {
+				r= mini;
+			}else {
+				Genre last= r;
+				while(last.getNext()!= null) {
+					last= last.getNext();
+				}
+				last.setNext(mini);
+			}
+			if(aux== temp) {
+				temp= temp.getNext();
+			}else if(aux.getNext()!= null) {
+				m.setNext(null);
+			}else {
+				m.setNext(m.getNext().getNext());
+				aux.setNext(null);
+			}
+		}
 		
 	}
 	
