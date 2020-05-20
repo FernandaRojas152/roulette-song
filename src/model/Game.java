@@ -261,7 +261,6 @@ public class Game {
 				aux.setNext(null);
 			}
 		}
-		
 	}
 	
 	/**

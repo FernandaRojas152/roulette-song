@@ -53,6 +53,4 @@ public class Genre {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	
-	
 }
