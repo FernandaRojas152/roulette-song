@@ -8,29 +8,35 @@ import java.io.Serializable;
  * Class User
  */
 public class User implements Serializable, Comparable<User>{
+	/**
+	 * constant
+	 */
+	private static final long serialVersionUID = 1L;
+
 	//Attributes
 	/** String that represents the name of the player*/
 	private String name;
-	
+
 	/** String that represents the nickname that the user chooses*/
 	private String nickname;
-	
+
 	/** String that represents the gender of the user. It can be male or female*/
 	private String gender;
-	
+
 	/** String that represents the password of the user*/
 	private String password;
-	
-	/** */
+
+	/** Cumulative integer that represents the points that a user can have in the game*/
 	private int points;
-	
+
 	//Methods
 	/**
-	 * 
-	 * @param name
-	 * @param nickname
-	 * @param gender
-	 * @param password
+	 * Constructor's method
+	 * @param name -name of the user
+	 * @param nickname -nickname that the user chooses to have in the game
+	 * @param gender -gender of the user
+	 * @param password -password of the user
+	 * Each user just for register in the game, has 10 points already.
 	 */
 	public User(String name, String nickname, String gender, String password) {
 		this.name = name;
@@ -39,110 +45,92 @@ public class User implements Serializable, Comparable<User>{
 		this.password = password;
 		points=10;
 	}
-	
+
+	/**
+	 * Overloading constructor User to user for the log in.
+	 * @param nickname -nickname of the user
+	 * @param password -password of the user
+	 * Each user just for register in the game, has 10 points already.
+	 */
 	public User(String nickname, String password) {
 		this.nickname = nickname;
 		this.password = password;
 		points=10;
 	}
-	
+
 	/**
-	 * 
-	 * @return
+	 * This method gets the name of the user
+	 * @return name- the name of the user
 	 */
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
+	 * This method modifies the name of the user
+	 * @param name -the new name of the user
 	 * 
-	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * This method gets the nickname that the user selected
+	 * @return nickname- user's nickname
 	 */
 	public String getNickname() {
 		return nickname;
 	}
 
 	/**
-	 * 
-	 * @param nickname
-	 */
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	/**
-	 * 
-	 * @return
+	 * This method gets the gender of the user.
+	 * @return gender- the gender of the user.
 	 */
 	public String getGender() {
 		return gender;
 	}
 
 	/**
-	 * 
-	 * @param gender
+	 * This method modifies the gender of the user
+	 * @param gender- the new gender of the user
 	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * This method gets the password of the user.
+	 * @return password- the password of the user.
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
-	 * 
-	 * @param password
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	/**
-	 * 
-	 * @return
+	 * This method gets the Points of the user.
+	 * @return points- the Points of the user.
 	 */
 	public int getPoints() {
 		return points;
 	}
 
 	/**
-	 * 
-	 * @param points
+	 * This method modifies the points of the user.
+	 * @param points- the new points of the user.
 	 */
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	
+
 	/**
-	 * 
-	 * @param p
-	 * @return
+	 * This method accumulates the points of the user, the user can get more points by playing.
+	 * @param p - the points that are going to be added to the previous points of the user
+	 * @return points -update the points of the user
 	 */
-	/**public int acumulatePoints(int p) {
+	public int accumulatePoints(int p) {
 		points= points+p;
 		return points;
-	}
-	*/
-	
-	public int acumulatePoints(int p) {
-		if (p==1) {
-			return 1;
-		} else {
-			return acumulatePoints(p-1)+p;
-		}
 	}
 
 	@Override
@@ -154,15 +142,4 @@ public class User implements Serializable, Comparable<User>{
 	public String toString() {
 		return "Name: "+name+"Nickname: "+nickname+"Gender: "+gender+ "Password: "+password;
 	}
-	
-	/**public static void main(String[] args) {
-		User user1= new User("fer", "f", "f", "1234");
-		user1.acumulatePoints(10);
-		System.out.println(user1.getPoints());
-		
-	}
-	*/
-	
-	
-	
 }

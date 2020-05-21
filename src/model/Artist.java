@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class Artist
  * It's the child of class Person.
@@ -7,7 +9,7 @@ package model;
  * @author Fernanda
  * @version May 20th 2020
  */
-public class Artist extends Person implements Comparable<Artist>{
+public class Artist extends Person implements Comparable<Artist>, Serializable{
 	/**
 	 * constant
 	 */
@@ -36,64 +38,64 @@ public class Artist extends Person implements Comparable<Artist>{
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the country of the artist
+	 * @return country -the respective country for the artist
 	 */
 	public String getCountry() {
 		return country;
 	}
 
 	/**
-	 * 
-	 * @param country
+	 * This method modifies the country that the user has.
+	 * @param country -the new string with the country.
 	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * This method gets the record label of the artist
+	 * @return recordCompany -the record label of the artist
 	 */
 	public String getRecordCompany() {
 		return recordCompany;
 	}
 
 	/**
-	 * 
-	 * @param recordCompany
+	 * This method modifies the record label of the artist, for a new record label or just a correction
+	 * @param recordCompany -the new record label name.
 	 */
 	public void setRecordCompany(String recordCompany) {
 		this.recordCompany = recordCompany;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * This method gets the left leafs on the tree.
+	 * @return left -an object of type artist that represents the left leaf.
 	 */
 	public Artist getLeft() {
 		return left;
 	}
 
 	/**
-	 * 
-	 * @param left
+	 * This method modifies any left leaf within the tree
+	 * @param left -the new value of the leaf
 	 */
 	public void setLeft(Artist left) {
 		this.left = left;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * This method gets the right leafs on the tree.
+	 * @return right -an object of type artist that represents the right leaf.
 	 */
 	public Artist getRight() {
 		return right;
 	}
 
 	/**
-	 * 
-	 * @param right
+	 * This method modifies any right leaf within the tree
+	 * @param right -the new value of the leaf
 	 */
 	public void setRight(Artist right) {
 		this.right = right;

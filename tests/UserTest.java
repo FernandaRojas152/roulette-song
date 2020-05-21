@@ -10,7 +10,7 @@ class UserTest {
 	/** STAGES */ 
 	public void stageUp1() {
 		user= new User("Fernanda", "fernandarojas152", "femenine", "fernanda");
-		user.acumulatePoints(5);
+		user.accumulatePoints(5);
 		
 	}
 	
@@ -19,7 +19,7 @@ class UserTest {
 	@Test
 	void testAcumulatePoints() {
 		stageUp1();
-		user.acumulatePoints(10);
+		user.accumulatePoints(10);
 		
 		assertEquals(25, user.getPoints(), "Should be 25");
 	}

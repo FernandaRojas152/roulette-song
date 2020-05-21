@@ -6,42 +6,82 @@ package model;
  * @version May 20th 2020
  */
 public class Genre {
+	//Attributes
+	/** String that represents the name of the player*/
 	private String name;
+	/** String that represents the rythm of the player*/
 	private String rythm;
+	/** Integer that represents the duration of the player*/ 
 	private int duration;
+	/** Indicates the next node on the linked list*/
 	
 	private Genre next;
-
+	
+	//Methods
+	/**
+	 * Constructor's method
+	 * @param name -name of the genre. 
+	 * @param rythm -rythm of the genre.
+	 * @param duration -duration of the genre.
+	 */
 	public Genre(String name, String rythm, int duration) {
 		this.name = name;
 		this.rythm = rythm;
 		this.duration= duration;
 	}
 	
+	/**
+	 * Overloading constructor's method
+	 * este lo miro despues
+	 */
 	public Genre(int duration) {
 		this.duration= duration;
 	}
-
+	
+	/**
+	 * This method gets the name of the genre
+	 * @return name- the name of the genre
+	 */
 	public String getName() {
 		return name;
 	}
-
+	
+	/**
+	 * This method modifies the name of the genre
+	 * @param name -the new name of the genre
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	/**
+	 * This method gets the rythm of the genre
+	 * @return rythm- the rythm of the genre
+	 */
 	public String getRythm() {
 		return rythm;
 	}
-
+	
+	/**
+	 * This method modifies the rythm of the genre
+	 * @param rythm -the new rythm of the genre
+	 */
 	public void setRythm(String rythm) {
 		this.rythm = rythm;
 	}
-
+	
+	/**
+	 * This method gets the next of the linked list
+	 * @return next- the next of the linked list
+	 */
 	public Genre getNext() {
 		return next;
 	}
-
+	
+	/**
+	 * This method modifies the next of the linked list
+	 * @param rythm -the new rythm of the linked list 
+	 */
 	public void setNext(Genre next) {
 		this.next = next;
 	}

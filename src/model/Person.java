@@ -1,10 +1,9 @@
 package model;
-
 import java.io.Serializable;
 
 /**
  * Class Person
- * It's the parent of Artist and User.
+ * It's the parent of Artist.
  * @author Fernanda
  * @version May 20th 2020
  */

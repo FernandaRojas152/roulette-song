@@ -4,9 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.net.MalformedURLException;
@@ -35,7 +38,6 @@ import javafx.scene.control.Alert.AlertType;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import model.Image;
 import model.MusicLibrary;
-import model.Player;
 import model.Song;
 import thread.ImageThread;
 import util.SoundPlayer;
@@ -50,7 +52,7 @@ public class GameController {
 	/**association with music library which it's the one who controls the linked list */
 	private MusicLibrary music;
 	private Song song;
-	private Player player;
+
 	/** association with the image that's going to be rotating*/
 	private Image i;
 
@@ -58,6 +60,7 @@ public class GameController {
 	private boolean change= false;
 	private boolean stop= false;
 	public static final String PATH = "resources/data/songData.txt";
+	public static final String PATH_SONGS ="res/songs";
 	public String last= "";
 	private int x= 0;
 
@@ -99,19 +102,19 @@ public class GameController {
 		song=null;
 		updateImage();
 	}
-	
+
 	public void init() {
 		stopButton.setOnAction(buttonHandler);
 	}
-	
-	
+
+
 	EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
-	    @Override
-	    public void handle(ActionEvent event) {
-	    	stop(event);
-	    }
+		@Override
+		public void handle(ActionEvent event) {
+			stop(event);
+		}
 	};
-	
+
 	/**
 	 * Goes to the next window to add(buy) a new song
 	 * @param event
@@ -126,7 +129,7 @@ public class GameController {
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	/**
 	 * This method will spin the image that represents a roulette
 	 * @param event
@@ -145,14 +148,14 @@ public class GameController {
 	public void updateImage() {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
-	
+
 	/**
 	 * When the user knows the answer, he can clic on this button and answer the name of the song
 	 * @param event
 	 */
 	@FXML
 	void answer(ActionEvent event) {
-		
+
 	}
 
 	//associations
@@ -173,7 +176,7 @@ public class GameController {
 	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{ 
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Song File");
-		file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"));
+		file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav", ".mp3", "*.aac"));
 		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
 			for(int i=0; i< selectedfile.size(); i++) {
@@ -181,6 +184,16 @@ public class GameController {
 				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
 					throw new SongAlreadyExistsException();
 				}
+				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
+				System.out.println("\\");
+				try {
+					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
 				music.addSong(selectedfile.get(i).getName(), selectedfile.get(i).getPath());
 				System.out.println(music.getFirst().getFileP());
 				System.out.println(selectedfile.get(i).getName());
@@ -295,11 +308,48 @@ public class GameController {
 	@FXML
 	void stop(ActionEvent event) {
 		i.setSpin(false);
-	
-		SoundPlayer.addSound("Test", "/songs/backgroundMusic.wav");
-		SoundPlayer.startSound("Test");
+		
+		if(music.isEmpty()) {
+			System.out.println("No hay canciones");
+		}else {
+			if(song== null) {
+				song= music.first;
+			}
+			try {
+				if(x==0) {
+					SoundPlayer.addSound("Test", song.getFileP());
+					SoundPlayer.startSound("Test");
+					System.out.println("inicia");
+				}
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		
 	}
-	
+
+
+	public void transferFile(InputStream source, OutputStream target) {
+
+		try {
+			byte[] buffer = new byte[1024];
+			int bytesRead;
+			while ((bytesRead = source.read(buffer, 0, buffer.length)) > 0)
+			{
+				target.write(buffer, 0, bytesRead);
+				target.flush();
+			}
+
+			source.close();
+
+		}catch(Exception ex) {
+			ex.printStackTrace();
+
+		}
+
+
+	}
 	public void playSong() {
 	}
 }
