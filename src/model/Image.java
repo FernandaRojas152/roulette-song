@@ -5,11 +5,15 @@ package model;
  * @version May 15th 2020
  */
 public class Image {
-
+	//Attributes
 	public final static double ANGLE= 1;
 	private double rotate;
 	private boolean spin;
-
+	
+	//Methods
+	/**
+	 * Constructor's method
+	 */
 	public Image() {
 	}
 

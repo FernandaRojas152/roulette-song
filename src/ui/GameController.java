@@ -178,7 +178,7 @@ public class GameController {
 	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{ 
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Song File");
-		file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav"));
+		//file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav", ".mp3"));
 		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
 			for(int i=0; i< selectedfile.size(); i++) {
@@ -347,7 +347,6 @@ public class GameController {
 
 		}catch(Exception ex) {
 			ex.printStackTrace();
-
 		}
 
 
