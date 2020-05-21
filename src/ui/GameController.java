@@ -155,7 +155,9 @@ public class GameController {
 	 */
 	@FXML
 	void answer(ActionEvent event) {
-
+		if(SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
+			SoundPlayer.stopActualSong();
+		}
 	}
 
 	//associations
@@ -176,7 +178,7 @@ public class GameController {
 	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{ 
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Song File");
-		file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav", ".mp3", "*.aac"));
+		file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav"));
 		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
 			for(int i=0; i< selectedfile.size(); i++) {
@@ -190,8 +192,8 @@ public class GameController {
 					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+				} catch (IOException e2) {
+					e2.printStackTrace();
 				}
 				
 				music.addSong(selectedfile.get(i).getName(), selectedfile.get(i).getPath());
