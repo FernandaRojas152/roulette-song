@@ -1,4 +1,7 @@
 package model;
+
+import util.SoundPlayer;
+
 /**
  * @author Fernanda
  * @version April 30th 2020

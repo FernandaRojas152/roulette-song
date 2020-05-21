@@ -21,6 +21,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -51,10 +52,14 @@ import customExceptions.SongAlreadyExistsException;
 public class GameController {
 	/** association with the image that's going to be rotating*/
 	private Image i;
+	
+	
 
 	//attributes
 	
 	private int x= 0;
+	
+	private MusicLibrary music;
 
 	@FXML
 	private ListView list;
@@ -90,6 +95,7 @@ public class GameController {
 	public GameController() {
 		i= new Image();
 		roulette= new ImageView();
+		music = new MusicLibrary();
 		updateImage();
 	}
 
@@ -113,7 +119,10 @@ public class GameController {
 	@FXML
 	void buySong(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chooseSong.fxml"));
-		Scene scene= new Scene(fxmlLoader.load());
+		Parent p = fxmlLoader.load();
+		ChooseController c = fxmlLoader.getController();
+		c.setGameController(this);		
+		Scene scene= new Scene(p);
 		Stage stage= new Stage();
 		stage.setTitle("Game mode");
 		stage.setScene(scene);
@@ -138,6 +147,12 @@ public class GameController {
 	public void updateImage() {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
+	
+	public void updateMusic(MusicLibrary music) {
+		
+		this.music = music;
+		
+	}
 
 	/**
 	 * When the user knows the answer, he can clic on this button and answer the name of the song
@@ -161,30 +176,34 @@ public class GameController {
 
 	/**
 	 * 
-	 * @param event
+	 * @param event 
 	 */
 	@FXML
 	void stop(ActionEvent event) {
 		i.setSpin(false);
 		
-		/**if(music.isEmpty()) {
+		if(music.isEmpty()) {
 			System.out.println("No hay canciones");
 		}else {
-			if(song== null) {
-				song= music.first;
-			}
-			try {
-				if(x==0) {
-					SoundPlayer.addSound("Test", song.getFileP());
-					SoundPlayer.startSound("Test");
-					System.out.println("inicia");
-				}
-			}catch(Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
+
+			System.out.println(music.getSize()+"Si hay hpta!");
+			
+			System.out.println(music.getFirst().getSongName());
+			System.out.println(music.getFirst().getFileP());
+			
+//			SoundPlayer.addSound(music.getFirst().getSongName(), music.getFirst().getFileP());
+//			SoundPlayer.startSound(music.getFirst().getSongName());
+			
+			
+			SoundPlayer.addSound("TEST", "/songs/Stacy.wav"); 
+			SoundPlayer.startSound("TEST");
 		
-		*/
+	
+
+		
+	}
+		
+		
 	}
 	
 	public void playSong() {

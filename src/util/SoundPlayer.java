@@ -67,7 +67,7 @@ public class SoundPlayer {
 
 	public static void nextSound(String nameSound) {
 		
-		
+	
 		
 	}
 

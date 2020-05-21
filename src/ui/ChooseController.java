@@ -27,8 +27,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import model.MusicLibrary;
 import model.Song;
+import util.SoundPlayer;
 
 public class ChooseController {
+	
+	
+	private GameController gameController;
 	/**association with music library which it's the one who controls the linked list */
 	private MusicLibrary music;
 	/** */
@@ -63,6 +67,7 @@ public class ChooseController {
 		song=null;
 		change= false;
 		stop= false;
+		list = new ListView<Song>();
 	}
 	/**
 	 * This will add the song that the user chooses to a listview and the doubly linked list.
@@ -93,10 +98,19 @@ public class ChooseController {
 				} catch (IOException e2) {
 					e2.printStackTrace();
 				}			
-				music.addSong(selectedfile.get(i).getName(), selectedfile.get(i).getPath());
-				System.out.println(music.getFirst().getFileP());
-				System.out.println(selectedfile.get(i).getName());
-				System.out.println(selectedfile.get(i).getPath());
+				
+				String name = selectedfile.get(i).getName();
+				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
+				
+				music.addSong(name, "/songs/"+name);
+//				SoundPlayer.addSound(name, "/songs/"+name); 
+				
+				gameController.updateMusic(music);
+				
+			
+				System.out.println(selectedfile.get(i).getName());				
+				System.out.println(path);
+				
 			}
 		}else {
 			try {
@@ -217,6 +231,11 @@ public class ChooseController {
 		}
 
 
+	}
+	
+	public void setGameController(GameController gameController) {
+		
+		this.gameController = gameController;
 	}
 
 }
