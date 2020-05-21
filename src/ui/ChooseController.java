@@ -106,8 +106,6 @@ public class ChooseController {
 //				SoundPlayer.addSound(name, "/songs/"+name); 
 				
 				gameController.updateMusic(music);
-				
-			
 				System.out.println(selectedfile.get(i).getName());				
 				System.out.println(path);
 				
@@ -217,14 +215,15 @@ public class ChooseController {
 
 		try {
 			byte[] buffer = new byte[1024];
-			int bytesRead;
-			while ((bytesRead = source.read(buffer, 0, buffer.length)) > 0)
+			int bytesRead = 0;
+			while ((bytesRead = source.read(buffer)) != -1)
 			{
 				target.write(buffer, 0, bytesRead);
 				target.flush();
 			}
 
 			source.close();
+			target.close();
 
 		}catch(Exception ex) {
 			ex.printStackTrace();

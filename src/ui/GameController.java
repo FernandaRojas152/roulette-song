@@ -188,15 +188,15 @@ public class GameController {
 
 			System.out.println(music.getSize()+"Si hay hpta!");
 			
+		
+			
 			System.out.println(music.getFirst().getSongName());
 			System.out.println(music.getFirst().getFileP());
 			
-//			SoundPlayer.addSound(music.getFirst().getSongName(), music.getFirst().getFileP());
-//			SoundPlayer.startSound(music.getFirst().getSongName());
+			SoundPlayer.addSound(music.getFirst().getSongName(), music.getFirst().getFileP());
+			SoundPlayer.startSound(music.getFirst().getSongName());
 			
-			
-			SoundPlayer.addSound("TEST", "/songs/Stacy.wav"); 
-			SoundPlayer.startSound("TEST");
+
 		
 	
 
