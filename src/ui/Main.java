@@ -17,6 +17,8 @@ import javafx.stage.Stage;
  */
 
 public class Main extends Application{
+	//Attributes
+	/** Association with the controller of the principal window*/
 	private PrincipalWindowController principal;
 	
 	public Main() {
@@ -30,7 +32,7 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		Parent root=FXMLLoader.load(getClass().getResource("PrincipalWindow.fxml"));
 		Scene scene= new Scene(root);
-		//scene.getStylesheets().add(getClass().getResource("fonts/fontstyle.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("music.png")));
 		primaryStage.setTitle("Roulette song");

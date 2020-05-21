@@ -53,8 +53,6 @@ public class GameController {
 	/** association with the image that's going to be rotating*/
 	private Image i;
 	
-	
-
 	//attributes
 	
 	private int x= 0;
@@ -165,15 +163,6 @@ public class GameController {
 		}
 	}
 
-	//associations
-
-
-
-	//Methods
-
-	
-
-
 	/**
 	 * 
 	 * @param event 
@@ -194,13 +183,7 @@ public class GameController {
 			System.out.println(music.getFirst().getFileP());
 			
 			SoundPlayer.addSound(music.getFirst().getSongName(), music.getFirst().getFileP());
-			SoundPlayer.startSound(music.getFirst().getSongName());
-			
-
-		
-	
-
-		
+			SoundPlayer.startSound(music.getFirst().getSongName());	
 	}
 		
 		
