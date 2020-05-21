@@ -38,29 +38,55 @@ public class Game {
 		first= null;
 		next= null;
 	}
-	/** getters and setters*/ 
+	
+	/**
+	 *  
+	 * @return
+	 */
 	public User getUser() {
 		return user;
 	}
-
+	
+	/**
+	 * 
+	 * @param user
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<User> getUsers() {
 		return users;
 	}
-
+	
+	/**
+	 * 
+	 * @param user
+	 */
 	public static void setUsers(ArrayList<User> user) {
 		users = user;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Artist getRoot() {
 		return root;
 	}
+	
+	/**
+	 * 
+	 * @param root
+	 */
 	public void setRoot(Artist root) {
 		this.root = root;
 	}
+	
 	/**
 	 * This method will search if the userExists already has been registered and exists in the game.
 	 * @param nickname -name that the user has and it's going to be the one that it's going to be
@@ -71,17 +97,12 @@ public class Game {
 		boolean exists= false;
 		int initial=0;
 		int end= users.size()-1;
-
 		while(initial<= end && !exists) {
-
 			int mid= (initial+end)/2;
-
 			if(users.get(mid).getNickname().equalsIgnoreCase(nickname)) {
 				exists= true;
 			}else if(users.get(mid).getNickname().compareToIgnoreCase(nickname)<0) {
-
 				initial= mid+1;
-
 			}else {
 				end= mid-1;
 			}
@@ -99,30 +120,26 @@ public class Game {
 		User temp= null;
 		int initial= 0;
 		int end= users.size()-1;
-
 		while(initial<= end && temp== null) {
 			int mid= (initial+end)/2;
-
 			if(users.get(mid).getNickname().equalsIgnoreCase(nickname)) {
 				temp= users.get(mid);
-
 			}else if(users.get(mid).getNickname().compareTo(nickname)<0) {
 				initial= mid+1;
 			}else {
 				end= end-1;
 			}
 		}
-
 		if(temp== null) {
 			throw new UserDoesntExistException(nickname);
 		}
-
 		return temp;
 	}
 
 	/**
-	 * This method will add a user to the 
-	 * <b> pre: </b>
+	 * This method will add a user to the arraylist, verifies if the fields are not empty to actually added it to the game, also
+	 * it verifies that nicknames are not equal to each other.
+	 * <b> pre: users can be null or !=null </b>
 	 * <b> post: </b>
 	 * @param user
 	 * @throws UserAlreadyExists

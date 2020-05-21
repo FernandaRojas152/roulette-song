@@ -85,11 +85,19 @@ public class Genre {
 	public void setNext(Genre next) {
 		this.next = next;
 	}
-
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getDuration() {
 		return duration;
 	}
-
+	
+	/**
+	 * 
+	 * @param duration
+	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}

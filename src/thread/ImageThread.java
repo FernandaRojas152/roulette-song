@@ -13,7 +13,6 @@ public class ImageThread extends Thread{
 	private GameController game;
 
 	public ImageThread(Image image, GameController game) {
-		super();
 		this.image = image;
 		this.game = game;
 	}
@@ -37,6 +36,7 @@ public class ImageThread extends Thread{
 	/**
 	 * Thread method to repeat the rotation.
 	 */
+	@Override
 	public void run() {
 		while(image.isSpin()) {
 			image.rotate();
