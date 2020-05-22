@@ -1,7 +1,6 @@
 package ui;
 
 import java.io.IOException;
-
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Game;
 
+/**
+ * @version May 21th 2020
+ * @author Fernanda
+ * Class PrincipalWindowController
+ */
 public class PrincipalWindowController {
 	private Game game;
 	public static boolean isMoving;

@@ -16,7 +16,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.sound.sampled.Clip;
+
 import java.util.List;
+import java.util.Random;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,6 +46,7 @@ import model.Image;
 import model.MusicLibrary;
 import model.Song;
 import thread.ImageThread;
+import thread.SongObserver;
 import util.SoundPlayer;
 import customExceptions.SongAlreadyExistsException;
 
@@ -53,10 +59,16 @@ public class GameController {
 	/** association with the image that's going to be rotating*/
 	private Image i;
 	
+	private SongObserver songO;
+	private Song song;
+
+	/** */
+	private Random r;
+
 	//attributes
-	
+
 	private int x= 0;
-	
+
 	private MusicLibrary music;
 
 	@FXML
@@ -83,9 +95,6 @@ public class GameController {
 	@FXML
 	private RadioButton sort;
 
-	@FXML
-	private RadioButton byArtist;
-
 	//methods
 	/**
 	 * Constructor's method
@@ -94,6 +103,9 @@ public class GameController {
 		i= new Image();
 		roulette= new ImageView();
 		music = new MusicLibrary();
+		r= new Random();
+		songO= new SongObserver();
+		songO.start();
 		updateImage();
 	}
 
@@ -145,21 +157,23 @@ public class GameController {
 	public void updateImage() {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
-	
+
 	public void updateMusic(MusicLibrary music) {
-		
+
 		this.music = music;
-		
+
 	}
 
 	/**
-	 * When the user knows the answer, he can clic on this button and answer the name of the song
+	 * When the user knows the answer, he can click on this button and answer the name of the song
 	 * @param event
 	 */
 	@FXML
 	void answer(ActionEvent event) {
 		if(SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
 			SoundPlayer.stopActualSong();
+			SoundPlayer.startSound(song.getNext().getFileP());
+			songO.setNextSong(song.getNext());
 		}
 	}
 
@@ -170,25 +184,23 @@ public class GameController {
 	@FXML
 	void stop(ActionEvent event) {
 		i.setSpin(false);
-		
+
 		if(music.isEmpty()) {
 			System.out.println("No hay canciones");
 		}else {
+			if(sort.isSelected()) {
+				for(int i=0; i< music.getSize(); i++) {
+					SoundPlayer.addSound(music.getSong(i).getSongName(), music.getFirst().getFileP());
+					SoundPlayer.startSound(music.getSong(i).getSongName());
+				}
+			}else if(random.isSelected()) {
 
-			System.out.println(music.getSize()+"Si hay hpta!");
-			
-		
-			
+			}
 			System.out.println(music.getFirst().getSongName());
 			System.out.println(music.getFirst().getFileP());
-			
-			SoundPlayer.addSound(music.getFirst().getSongName(), music.getFirst().getFileP());
-			SoundPlayer.startSound(music.getFirst().getSongName());	
+		}
 	}
-		
-		
-	}
-	
+
 	public void playSong() {
 	}
 }

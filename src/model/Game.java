@@ -20,18 +20,25 @@ import customExceptions.UserDoesntExistException;
  * Class Game
  */
 public class Game {
-	/** association of type arraylist with object of type users*/
+	/** association of type Arraylist with object of type users*/
 	private static ArrayList<User> users;
+	/** */
 	private static User user;
+	/** */
 	private Song first;
+	/** */
 	private Artist root;
+	/** */
 	private Genre next;
+	/** */
 	public static final String FILE = "resources/data/gameDate.txt";
+	/** */
 	public static boolean s= false;
 
 	//Methods
 	/**
 	 * Constructor's method
+	 * Initialize all objects.
 	 */
 	public Game() {
 		users= new ArrayList<User>();

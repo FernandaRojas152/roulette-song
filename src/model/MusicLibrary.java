@@ -80,13 +80,15 @@ public class MusicLibrary{
 	 */
 	public void addSong(String name, String fileP) {
 		Song temp= new Song(name, fileP);
-		if(isEmpty()==true) {
+		if(isEmpty()==true) {  
 			first= temp;
 			last= temp;
 		}else {
 			temp.prev= last;
 			last.next= temp;
 			last= temp;
+		
+				
 		}
 		size++;
 	}
