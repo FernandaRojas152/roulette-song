@@ -51,5 +51,10 @@
             <ToggleGroup fx:id="options" />
          </toggleGroup>
       </RadioButton>
+      <ImageView fx:id="gif" fitHeight="73.0" fitWidth="79.0" layoutX="11.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../image/sound_on.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

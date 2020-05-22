@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.PrincipalWindowController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.PrincipalWindowController">
    <children>
-      <Button layoutX="526.0" layoutY="41.0" mnemonicParsing="false" onAction="#signIn" text="Sign in" />
-      <Button layoutX="530.0" layoutY="137.0" mnemonicParsing="false" onAction="#logIn" text="Log in" />
-      <Button layoutX="536.0" layoutY="287.0" mnemonicParsing="false" onAction="#play" text="Play" />
-      <ImageView fitHeight="361.0" fitWidth="405.0" layoutX="105.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="528.0" layoutY="23.0" mnemonicParsing="false" onAction="#signIn" text="Sign in" />
+      <Button layoutX="530.0" layoutY="116.0" mnemonicParsing="false" onAction="#logIn" text="Log in" />
+      <Button layoutX="536.0" layoutY="228.0" mnemonicParsing="false" onAction="#play" text="Play" />
+      <ImageView fitHeight="361.0" fitWidth="405.0" layoutX="96.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@536082.png" />
          </image>
       </ImageView>
-      <Button layoutX="14.0" layoutY="372.0" mnemonicParsing="false" onAction="#userProfile" text="Users" />
+      <Button layoutX="14.0" layoutY="350.0" mnemonicParsing="false" onAction="#userProfile" text="Users" />
+      <Label fx:id="message" layoutX="14.0" layoutY="400.0" text="Welcome to the game!" />
    </children>
 </AnchorPane>
