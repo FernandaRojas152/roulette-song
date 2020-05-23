@@ -80,7 +80,7 @@ public class Genre {
 	
 	/**
 	 * This method modifies the next of the linked list
-	 * @param rythm -the new rythm of the linked list 
+	 * @param next -the new next of the linked list 
 	 */
 	public void setNext(Genre next) {
 		this.next = next;

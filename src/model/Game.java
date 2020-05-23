@@ -147,9 +147,9 @@ public class Game {
 	 * <b> pre: users can be null or !=null </b>
 	 * <b> post: users!=null </b>
 	 * @param user -the user to be added
-	 * @throws UserAlreadyExists -it's thrown when the player tries to add a new user but this already exists, it's confirmed 
+	 * @throws UserAlreadyExistsException -it's thrown when the player tries to add a new user but this already exists, it's confirmed 
 	 * by the nickname off all users.
-	 * @throws RequiredFieldsException- it's thrown when a user doesn't fill all the text fields required to register a new user.
+	 * @throws RequiredFieldsException - it's thrown when a user doesn't fill all the text fields required to register a new user.
 	 */
 	public void addUser(User user) throws UserAlreadyExistsException, RequiredFieldsException{
 		if(userExists(user.getNickname())) {
@@ -170,6 +170,8 @@ public class Game {
 
 	/**
 	 * serializes and saves the data.
+	 * @throws IOException -saving problems
+	 * @throws FileNotFoundException -file not found
 	 */
 	public static void save() throws IOException, FileNotFoundException{
 		//users.add(new User("Fernanda", "Fernanda", "Femenine", "Fernanda"));
@@ -248,6 +250,7 @@ public class Game {
 	
 	/**
 	 * sort by selection
+	 * @param temp -object of genre
 	 */
 	public void sortGenre(Genre temp) {
 		Genre r= null;

@@ -21,7 +21,7 @@ public class SongObserver extends Thread{
 	
 	/**
 	 * This method modifies the next song.
-	 * @return nextSong -object that represents the next song
+	 * @param nextSong -object that represents the next song
 	 */
 	public void setNextSong(Song nextSong) {
 		this.nextSong = nextSong;

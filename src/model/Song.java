@@ -61,7 +61,7 @@ public class Song implements Comparable<Song>{
 	
 	/**
 	 * This method modifies the next song.
-	 * @return next -object that represents the next song
+	 * @param next -object that represents the next song
 	 */
 	public void setNext(Song next) {
 		this.next = next;
