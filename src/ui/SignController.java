@@ -15,26 +15,42 @@ import javafx.stage.Stage;
 import model.Game;
 import model.User;
 
+/**
+ * @version May 22th 2020
+ * @author Fernanda
+ * Class SignController
+ */
 public class SignController {
+	//associations
 	private Game game;
 	private User users;
 	private Stage stage1;
 
+	//Attributes
+	/** A Text Field that it's going to get the nickname*/ 
 	@FXML
 	private TextField txtNickname;
 
+	/** A Text Field that it's going to get the password*/
 	@FXML
 	private PasswordField txtPassword;
-	
+
 	@FXML
 	private Button sign;
 
+	//Methods
+	/**
+	 * Constructor's method
+	 * initialize game
+	 */
 	public SignController() {
 		game= new Game();
 	}
 	/**
-	 * 
-	 * @param event
+	 * This method will login the user and catch all the exceptions that can happen meanwhile the user
+	 * is trying to login.
+	 * <b> pre: user != null</b>
+	 * <b> pos: the user log-in
 	 */
 	@FXML
 	void signIn(ActionEvent event) {

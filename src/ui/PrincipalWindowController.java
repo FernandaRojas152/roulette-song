@@ -17,23 +17,35 @@ import model.Game;
  * Class PrincipalWindowController
  */
 public class PrincipalWindowController {
+	/** */
 	private Game game;
+	/** */
 	public static boolean isMoving;
+	/** */
 	public static final double STEP_RIGHT = 5;
+	/** */
 	public static final double STEP_LEFT = -5;
+	/** */
 	private double posX;
 
 	@FXML
 	private Label message;
 	@FXML
 	private AnchorPane pane;
+	
+	/**
+	 * 
+	 */
 	public PrincipalWindowController() {
 		game= new Game();
 		message= new Label();
 		isMoving= true;
 		posX=5;
 	}
-
+	
+	/**
+	 * 
+	 */
 	public void initialize() {
 		new Thread() {
 			public void run() {
@@ -72,7 +84,7 @@ public class PrincipalWindowController {
 	void play(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Playing.fxml"));
 		Scene scene= new Scene(fxmlLoader.load());
-		//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
 		Stage stage= new Stage();
 		stage.setTitle("Roulette Song");
 		stage.setScene(scene);
@@ -104,7 +116,9 @@ public class PrincipalWindowController {
 		stage.show();
 	}
 
-
+	/**
+	 * 
+	 */
 	public void move() {
 		if(message.getLayoutX() +posX <=0) {
 			posX= PrincipalWindowController.STEP_RIGHT;

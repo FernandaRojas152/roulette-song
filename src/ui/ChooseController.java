@@ -31,23 +31,25 @@ import util.SoundPlayer;
 
 public class ChooseController {
 	
-	
+	/** association with game controller to pass the added data to that controller*/
 	private GameController gameController;
+	
 	/**association with music library which it's the one who controls the linked list */
 	private MusicLibrary music;
-	/** */
-	private Song song;
-	/** */ 
-	public static final String PATH = "resources/data/songData.txt";
-	/** */
-	public static final String PATH_SONGS ="res/songs";
-	/** */
-	public String last= "";
-	/** */
-	private boolean change;
-	/** */
-	private boolean stop;
 	
+	/** association with the song that's going to be playing*/
+	private Song song;
+	
+	/**Gets the path for the persistence songs data*/ 
+	public static final String PATH = "resources/data/songData.txt";
+
+	/**Gets the path for adding songs*/
+	public static final String PATH_SONGS ="res/songs";
+	
+	/** association with the song that's going to be playing*/
+	public String last= "";
+	
+	/** association with the song that's going to be playing*/
 	private FXMLLoader loader;
 	
 	//private GameController GameController= loader.getController();
@@ -65,8 +67,6 @@ public class ChooseController {
 	public ChooseController() {
 		music= new MusicLibrary();
 		song=null;
-		change= false;
-		stop= false;
 		list = new ListView<Song>();
 	}
 	/**
@@ -142,7 +142,6 @@ public class ChooseController {
 				list.getItems().add(input[0]);
 			}
 			last = d;
-			change = false;
 		} catch (FileNotFoundException ex) {
 			ex.getMessage();
 		} catch (IOException ex) {
@@ -181,7 +180,6 @@ public class ChooseController {
 			}
 
 			bW.close();
-			change= false;
 		} catch (Exception e) {
 			Platform.runLater(() -> {
 				Alert dialog = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.OK);

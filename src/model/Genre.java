@@ -32,7 +32,7 @@ public class Genre {
 	
 	/**
 	 * Overloading constructor's method
-	 * este lo miro despues
+	 * @param duration -duration of the genre.
 	 */
 	public Genre(int duration) {
 		this.duration= duration;
@@ -87,16 +87,16 @@ public class Genre {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the duration of the genre
+	 * @return duration -genre's duration
 	 */
 	public int getDuration() {
 		return duration;
 	}
 	
 	/**
-	 * 
-	 * @param duration
+	 * This method modifies the duration of the genre
+	 * @param duration -the new duration of the genre.
 	 */
 	public void setDuration(int duration) {
 		this.duration = duration;

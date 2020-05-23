@@ -22,18 +22,16 @@ import customExceptions.UserDoesntExistException;
 public class Game {
 	/** association of type Arraylist with object of type users*/
 	private static ArrayList<User> users;
-	/** */
+	/** Association with class User, it's the user that's gonna be added to the arraylist of users */
 	private static User user;
-	/** */
+	/** Association with the first Song*/
 	private Song first;
-	/** */
+	/** Association with the root in Artist*/
 	private Artist root;
-	/** */
-	private Genre next;
-	/** */
+	/** Constant that saves the data of the serializable User */
 	public static final String FILE = "resources/data/gameDate.txt";
-	/** */
-	public static boolean s= false;
+	/** boolean*/
+	public static boolean s;
 
 	//Methods
 	/**
@@ -43,52 +41,52 @@ public class Game {
 	public Game() {
 		users= new ArrayList<User>();
 		first= null;
-		next= null;
+		s=false;
 	}
 	
 	/**
-	 *  
-	 * @return
+	 *  This method get's the user in the game
+	 * @return user -object of user
 	 */
 	public User getUser() {
 		return user;
 	}
 	
 	/**
-	 * 
-	 * @param user
+	 * This method modifies the user in the game
+	 * @param user -the new user
 	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the list of users in the game
+	 * @return users- arraylist of users
 	 */
 	public ArrayList<User> getUsers() {
 		return users;
 	}
 	
 	/**
-	 * 
-	 * @param user
+	 * This method modifies the list of users in the game
+	 * @param user- the modified list
 	 */
 	public static void setUsers(ArrayList<User> user) {
 		users = user;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the root in the binary search tree
+	 * @return root -the root of the tree
 	 */
 	public Artist getRoot() {
 		return root;
 	}
 	
 	/**
-	 * 
-	 * @param root
+	 * This method modifies the root in the binary search tree
+	 * @param root -the new root
 	 */
 	public void setRoot(Artist root) {
 		this.root = root;
@@ -147,10 +145,11 @@ public class Game {
 	 * This method will add a user to the arraylist, verifies if the fields are not empty to actually added it to the game, also
 	 * it verifies that nicknames are not equal to each other.
 	 * <b> pre: users can be null or !=null </b>
-	 * <b> post: </b>
-	 * @param user
-	 * @throws UserAlreadyExists
-	 * @throws RequiredFieldsException
+	 * <b> post: users!=null </b>
+	 * @param user -the user to be added
+	 * @throws UserAlreadyExists -it's thrown when the player tries to add a new user but this already exists, it's confirmed 
+	 * by the nickname off all users.
+	 * @throws RequiredFieldsException- it's thrown when a user doesn't fill all the text fields required to register a new user.
 	 */
 	public void addUser(User user) throws UserAlreadyExistsException, RequiredFieldsException{
 		if(userExists(user.getNickname())) {
@@ -170,7 +169,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 * serializes and saves the data.
 	 */
 	public static void save() throws IOException, FileNotFoundException{
 		//users.add(new User("Fernanda", "Fernanda", "Femenine", "Fernanda"));
@@ -182,10 +181,10 @@ public class Game {
 	}
 
 	/**
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * @throws ClassNotFoundException 
-	 * 
+	 * @throws IOException -problems with reading data
+	 * @throws FileNotFoundException -file doesn't exists
+	 * @throws ClassNotFoundException -problems with reading data
+	 * reads the data on the serialize txt file
 	 */
 	public static void readData() throws FileNotFoundException, IOException, ClassNotFoundException {
 		File myFile = new File(FILE);
@@ -319,9 +318,9 @@ public class Game {
 	}
 	
 	/**
-	 * 
-	 * @param a
-	 * @return
+	 * sorts artist in pre order
+	 * @param a -artist
+	 * @return artistSorted -a list with the artists sorted
 	 */
 	public List<Artist> preOrderSort(Artist a){
 		List<Artist> artistSorted= new ArrayList<Artist>();
@@ -338,9 +337,9 @@ public class Game {
 	}
 	
 	/**
-	 * 
-	 * @param a
-	 * @return
+	 * sorts artist in post order
+	 * @param a -artist
+	 * @return artistSorted -a list with the artists sorted
 	 */
 	public List<Artist> inOrderSort(Artist a){
 		List<Artist> artistSorted= new ArrayList<Artist>();
@@ -352,7 +351,11 @@ public class Game {
 		return artistSorted;
 	}
 	
-	
+	/**
+	 * Sorts the artist in posorder
+	 * @param a -artist
+	 * @return artistSorted -a list with the artists sorted
+	 */
 	public List<Artist> posOrderSort(Artist a){
 		List<Artist> artistSorted= new ArrayList<Artist>();
 		if(a!=null) {

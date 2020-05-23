@@ -19,7 +19,7 @@ import model.Game;
 import model.User;
 
 /**
- * @version May 15h 2020
+ * @version May 15h 2020 
  * @author Fernanda
  * Class RegisterController
  */
@@ -30,27 +30,26 @@ public class RegisterController {
 	private Stage stage1;
 
 	//Attributes
-	/** A Text Field that it's gonna the get the name*/
+	/** A Text Field that it's going to get the name*/
 	@FXML
 	private TextField txtName;
 
-	/**A Text Field that it's gonna the get the nickname */
+	/**A Text Field that it's going to get the nickname */
 	@FXML
 	private TextField txtNickname;
 
-	/**A Text Field that it's gonna the get the nickname */
+	/**A Text Field that it's gonna get the gender */
 	@FXML
 	private TextField txtGender;
 
-	/**A Text Field that it's gonna the get the nickname */
-	@FXML
+	/**A Text Field that it's gonna get the password */
 	private PasswordField txtPassword;
 
 	@FXML
 	private Button register;
 
 	//Methods
-	/**
+	/** 
 	 * Constructor's method
 	 * initialize game
 	 */

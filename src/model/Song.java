@@ -7,20 +7,20 @@ package model;
  */
 public class Song implements Comparable<Song>{
 	//Attributes
-	/** */
+	/** Previous song in the doubly linked list*/
 	public Song prev;
-	/** */
+	/** Next song in the doubly linked list*/
 	public Song next;
-	/** */
+	/** A String that represents the name of the song*/
 	public String songName;
-	/** */
+	/** A string that saves the path of the song added*/
 	public String fileP;
 	
+	//Methods
 	/**
-	 * 
-	 * @param songName
-	 * @param artist
-	 * @param fileP
+	 * Constructor's method
+	 * @param songName -the name of the song.
+	 * @param fileP -the file path of the song.
 	 */
 	public Song(String songName, String fileP) {
 		this.songName= songName;
@@ -28,67 +28,51 @@ public class Song implements Comparable<Song>{
 	}
 	
 	/** 
-	 * 
-	 * @return
+	 * This method gets the file path
+	 * @return fileP -path of the song
 	 */
 	public String getFileP() {
 		return fileP;
 	}
 	
-	/** 
-	 * 
-	 * @param fileP
-	 */
-	public void setFileP(String fileP) {
-		this.fileP = fileP;
-	}
-	
 	/**
-	 * 
-	 * @return
+	 * This method gets the previous song.
+	 * @return prev -object that represents the previous song
 	 */
 	public Song getprev() {
 		return prev;
 	}
 	
 	/**
-	 * 
-	 * @param prev
+	 * This method modifies the previous song in the list.
+	 * @param prev -the new previous.
 	 */
 	public void setprev(Song prev) {
 		this.prev = prev;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the next song.
+	 * @return next -object that represents the next song
 	 */
 	public Song getNext() {
 		return next;
 	}
 	
 	/**
-	 * 
-	 * @param next
+	 * This method modifies the next song.
+	 * @return next -object that represents the next song
 	 */
 	public void setNext(Song next) {
 		this.next = next;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * This method gets the name of the song
+	 * @return songName -String for the name
 	 */
 	public String getSongName() {
 		return songName;
-	}
-
-	/**
-	 * 
-	 * @param songName
-	 */
-	public void setSongName(String songName) {
-		this.songName = songName;
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class Person implements Serializable{
 	//methods
 	/**
 	 * Constructor's method
-	 * @param name
+	 * @param name -person's name
 	 */
 	public Person(String name) {
 		this.name = name;

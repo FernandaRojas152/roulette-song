@@ -59,30 +59,33 @@ public class GameController {
 	/** association with the image that's going to be rotating*/
 	private Image i;
 	
+	/** association with thread*/
 	private SongObserver songO;
+	
+	/** association with the song that's going to be playing*/
 	private Song song;
 
-	/** */
+	/** Generates random numbers*/
 	private Random r;
 
-	//attributes
-
-	private int x= 0;
-
+	/** association with the music that's going to be playing*/
 	private MusicLibrary music;
 
+	/** A Text Field that it's going to get the list*/
 	@FXML
 	private ListView list;
-
+	
 	@FXML
 	private Button add;
 
 	@FXML
 	private Button stopButton;
-
+	
+	/** A Text Field that it's going to get the text*/
 	@FXML
 	private TextField text;
 
+	/** A Text Field that it's going to get the roulette*/
 	@FXML
 	private ImageView roulette;
 
@@ -157,11 +160,14 @@ public class GameController {
 	public void updateImage() {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
-
+	
+	/**
+	 * This method updates the song and play the next song in the list
+	 * @param music -next music
+	 */
 	public void updateMusic(MusicLibrary music) {
 
 		this.music = music;
-
 	}
 
 	/**
@@ -178,7 +184,7 @@ public class GameController {
 	}
 
 	/**
-	 * 
+	 * This method stops the rotation of the image and then plays the song,sorted or randomly 
 	 * @param event 
 	 */
 	@FXML
@@ -199,8 +205,5 @@ public class GameController {
 			System.out.println(music.getFirst().getSongName());
 			System.out.println(music.getFirst().getFileP());
 		}
-	}
-
-	public void playSong() {
 	}
 }
