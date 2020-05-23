@@ -1,9 +1,15 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
+import customExceptions.UserDoesntExistException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import model.Game;
 import model.User;
@@ -16,61 +22,83 @@ import model.User;
 
 public class UserController {
 	//associations
-	private ArrayList<User> user;
+	private ArrayList<User> users;
+	private User user;
 	private Game game;
-	
+
 	//Attributes
 	/** A Text Field that it's going to get the image*/
-    @FXML
-    private ImageView image;
+	@FXML
+	private ImageView image;
 
 	/** A Text Field that it's going to get the nickname*/
-    @FXML
-    private Label nick;
+	@FXML
+	private Label nick;
 
 	/** A Text Field that it's going to get the gender*/
-    @FXML
-    private Label g;
+	@FXML
+	private Label g;
 
 	/** A Text Field that it's going to get the txtPoints*/
-    @FXML
-    private Label txtPoints;
+	@FXML
+	private Label txtPoints;
 
 	/** A Text Field that it's going to get the points*/
-    @FXML
-    private Label points;
+	@FXML
+	private Label points;
 
 	/** A Text Field that it's going to get the nickname*/
-    @FXML
-    private Label nickname;
-    
-	/** A Text Field that it's going to get the gender*/
-    @FXML
-    private Label gender;
+	@FXML
+	private Label nickname;
 
-  //Methods
-  	/** 
-  	 * Constructor's method
-  	 */
-	public UserController() {
-		user= new ArrayList<>();
-	}
-    
-	/**
-	 * This method search the user wanted and shows it
+	/** A Text Field that it's going to get the gender*/
+	@FXML
+	private Label gender;
+
+	//Methods
+	/** 
+	 * Constructor's method
 	 */
-	public void searchUser() {
-		
+	public UserController() {
+		users= new ArrayList<>();
+		game= new Game();
 	}
-		
+
+	public void initialize() {
+	}
+
+	
 	/**
 	 *This method shows the info of the user (nickname, gender, points)
+	 * @throws UserDoesntExistException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @throws FileNotFoundException 
 	 */
-    public void showUserInformation() {
-    	for(User users: user) {
-    		
-    	}
-    	
-    }
+	@FXML
+	public void showUserInformation(ActionEvent event) throws UserDoesntExistException, FileNotFoundException, ClassNotFoundException, IOException {
+		Game.readData();
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Text Input Dialog");
+		dialog.setHeaderText("Look, a Text Input Dialog");
+		dialog.setContentText("Please enter your name:");
 
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+			User u= null;
+			try {
+				u= game.searchUser(result.get());
+				nickname.setText(u.getNickname());
+				gender.setText(u.getGender());
+				points.setText(String.valueOf(u.getPoints()));
+				System.out.println("funciono");
+				nickname.setVisible(true);
+				gender.setVisible(true);
+				points.setVisible(true);
+			}catch(Exception e) {
+				e.getMessage();
+			}
+		}
+	}
 }
