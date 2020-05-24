@@ -18,7 +18,6 @@ class GameTest {
 		game= new Game();
 		user= new User("Fernanda", "fernandarojas152", "feminine", "fernanda");
 		game.addUser(user);
-		
 	}
 	
 	public void setUpStage2() throws UserAlreadyExistsException, RequiredFieldsException {

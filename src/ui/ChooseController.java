@@ -127,8 +127,9 @@ public class ChooseController {
 	 * This method will load a list that has been saved with song name and path.
 	 *<b> pre: </b> 
 	 * @param d
+	 * @throws SongAlreadyExistsException 
 	 */
-	public void loadSongs(String d) {
+	public void loadSongs(String d) throws SongAlreadyExistsException {
 		try {
 			FileInputStream fis = new FileInputStream(new File(d));
 			BufferedReader bf = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
@@ -150,7 +151,7 @@ public class ChooseController {
 	}
 
 	@FXML
-	void loadFile(ActionEvent event) {
+	void loadFile(ActionEvent event) throws SongAlreadyExistsException {
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Song List File");
 		file.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt", "*.doc", "*.docx"));

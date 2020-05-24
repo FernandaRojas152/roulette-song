@@ -55,9 +55,7 @@ public class PrincipalWindowController {
 							move();
 						}
 					});
-
 					message.setLayoutX(message.getLayoutX() + posX);
-
 					try {
 						Thread.sleep(60);
 					} 
@@ -73,7 +71,7 @@ public class PrincipalWindowController {
 	void logIn(ActionEvent event) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterUser.fxml"));
 		Scene scene= new Scene(fxmlLoader.load());
-		//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
 		Stage stage= new Stage();
 		stage.setTitle("Log in");
 		stage.setScene(scene);
@@ -99,7 +97,7 @@ public class PrincipalWindowController {
 	void signIn(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignIn.fxml"));
 		Scene scene= new Scene(fxmlLoader.load());
-		//scene.getStylesheets().add(getClass().getResource("/resources/fontstyle.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
 		Stage stage= new Stage();
 		stage.setTitle("Sign in");
 		stage.setScene(scene);
@@ -110,6 +108,7 @@ public class PrincipalWindowController {
 	void userProfile(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("User.fxml"));
 		Scene scene= new Scene(fxmlLoader.load());
+		scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
 		Stage stage= new Stage();
 		stage.setTitle("User profile");
 		stage.setScene(scene);

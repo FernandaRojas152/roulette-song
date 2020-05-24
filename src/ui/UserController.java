@@ -27,10 +27,6 @@ public class UserController {
 	private Game game;
 
 	//Attributes
-	/** A Text Field that it's going to get the image*/
-	@FXML
-	private ImageView image;
-
 	/** A Text Field that it's going to get the nickname*/
 	@FXML
 	private Label nick;
@@ -79,8 +75,8 @@ public class UserController {
 	public void showUserInformation(ActionEvent event) throws UserDoesntExistException, FileNotFoundException, ClassNotFoundException, IOException {
 		Game.readData();
 		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Text Input Dialog");
-		dialog.setHeaderText("Look, a Text Input Dialog");
+		dialog.setTitle("Choose user");
+		dialog.setHeaderText("You can see the ");
 		dialog.setContentText("Please enter your name:");
 
 		// Traditional way to get the response value.
@@ -96,7 +92,7 @@ public class UserController {
 				nickname.setVisible(true);
 				gender.setVisible(true);
 				points.setVisible(true);
-			}catch(Exception e) {
+			}catch(UserDoesntExistException e) {
 				e.getMessage();
 			}
 		}

@@ -1,5 +1,7 @@
 package model;
 
+import customExceptions.SongAlreadyExistsException;
+
 /**
  * @author Fernanda
  * @version April 30th 2020
@@ -85,8 +87,9 @@ public class MusicLibrary{
 	 * <b> pos: list !=null </b>
 	 * @param name -the name of the song
 	 * @param fileP -the path of the song
+	 * @throws SongAlreadyExistsException -when the user it's trying to add a song that it's already on the data
 	 */
-	public void addSong(String name, String fileP) {
+	public void addSong(String name, String fileP) throws SongAlreadyExistsException{
 		Song temp= new Song(name, fileP);
 		if(isEmpty()==true) {  
 			first= temp;

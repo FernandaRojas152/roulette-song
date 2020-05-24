@@ -140,6 +140,6 @@ public class User implements Serializable, Comparable<User>{
 
 	@Override
 	public String toString() {
-		return "Name: "+name+"Nickname: "+nickname+"Gender: "+gender+ "Password: "+password;
+		return "Name: "+name+" Nickname: "+nickname+" Gender: "+gender+ " Password: "+password;
 	}
 }
