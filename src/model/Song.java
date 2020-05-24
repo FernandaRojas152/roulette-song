@@ -25,6 +25,7 @@ public class Song implements Comparable<Song>{
 	public Song(String songName, String fileP) {
 		this.songName= songName;
 		this.fileP= fileP;
+		
 	}
 	
 	/** 
@@ -78,13 +79,20 @@ public class Song implements Comparable<Song>{
 	@Override
 	public int compareTo(Song song) {
 		int c=0;
-		if(this.songName.compareToIgnoreCase(song.songName)> 0) {
+		if(song!=null) {
+		if(songName.compareTo(song.getSongName()) > 0) {
 			c=1;
-		}else if(this.songName.compareToIgnoreCase(song.songName) <0) {
+		}else if(songName.compareToIgnoreCase(song.getSongName()) <0) {
 			c=-1;
 		}else{
 			c=0;
 		}
+		}
 		return c;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString();
 	}
 }

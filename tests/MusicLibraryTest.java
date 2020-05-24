@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import customExceptions.RequiredFieldsException;
 import customExceptions.SongAlreadyExistsException;
+import customExceptions.UserAlreadyExistsException;
 import model.MusicLibrary;
+import model.Song;
 
 /**
  * @version May 24th 2020
@@ -15,6 +18,7 @@ import model.MusicLibrary;
 
 class MusicLibraryTest {
 	private MusicLibrary music;
+	private Song song;
 	
 	public void setUpStage1() throws SongAlreadyExistsException {
 		music= new MusicLibrary();
@@ -79,5 +83,4 @@ class MusicLibraryTest {
 		setUpStage3();
 		assertTrue(music.search("tired", "/res/songs/tired.wav"), "Should be true");
 	}
-	
 }

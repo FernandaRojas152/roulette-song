@@ -1,11 +1,12 @@
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
-
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import customExceptions.RequiredFieldsException;
 import customExceptions.UserAlreadyExistsException;
 import customExceptions.UserDoesntExistException;
+import model.Artist;
 import model.Game;
 import model.User;
 
@@ -49,6 +50,16 @@ class GameTest {
 		user= new User("Fernanda", "fernandarojas152", "feminine", "fernanda");
 	}
 	
+	public void setUpStage6() {
+		game= new Game();
+		Artist a= new Artist("Ed Sheeran", "England", "Atlantic Records");
+		Artist b= new Artist("One Direction", "England", "SYCO Music");
+		Artist c= new Artist("Taylor Swift", "USA", "Universal Music");
+		game.addArtist(a);
+		game.addArtist(b);
+		game.addArtist(c);
+	}
+	
 	
 	/** TESTS */
 	@Test
@@ -76,6 +87,12 @@ class GameTest {
 	void testEmptyUser() throws UserAlreadyExistsException, RequiredFieldsException {
 		setUpStage2();
 		Assertions.assertThrows(UserDoesntExistException.class, () ->game.searchUser("fer"), "Should throw an exception");
+	}
+	
+	@Test
+	void testExists() throws UserAlreadyExistsException, RequiredFieldsException {
+		setUpStage1();
+		assertEquals(true, game.userExists("fernandarojas152"), "Should be true");
 	}
 	
 	@Test
@@ -117,5 +134,38 @@ class GameTest {
 		} catch (UserDoesntExistException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	@Test
+	void testAddArtist() throws UserAlreadyExistsException, RequiredFieldsException {
+		setUpStage2();
+		Artist a= new Artist("Ed Sheeran", "England", "Atlantic Records");
+		game.addArtist(a);
+		assertTrue(game.getRoot().getName().equals(a.getName()));
+	}
+	
+	@Test
+	void testPreOrder() throws UserAlreadyExistsException, RequiredFieldsException {
+		setUpStage6();
+		List<Artist> lp = game.preOrderSort(game.getRoot());
+		assertTrue(lp.get(0).getName().equals("Ed Sheeran"), "Should be correct");
+	}
+	
+	@Test
+	void testPosOrder() throws UserAlreadyExistsException, RequiredFieldsException {
+		setUpStage6();
+		List<Artist> lp = game.posOrderSort(game.getRoot());
+		System.out.println(lp.get(0).getName());
+		assertTrue(lp.get(0).getName().equals("Ed Sheeran"), "Should be correct");
+	}
+	
+	@Test
+	void testInOrder() throws UserAlreadyExistsException, RequiredFieldsException {
+		setUpStage6();
+		Artist d= new Artist("Adele", "England", "A&A");
+		game.addArtist(d);
+		assertTrue("Left", game.getRoot().getLeft().getRecordCompany().equals("A&A"));
+		List<Artist> lp = game.inOrderSort(game.getRoot());
+		assertEquals("Atlantic Records",lp.get(0).getRecordCompany(), "Should be correct");
 	}
 }
