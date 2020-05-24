@@ -57,7 +57,6 @@ class GameTest {
 		try {
 			User user2= new User("Fernanda", "fernandarojas152", "feminine", "fernanda");
 			game.addUser(user2);
-			
 		} catch (UserAlreadyExistsException e) {
 			assertTrue(true);
 		}
