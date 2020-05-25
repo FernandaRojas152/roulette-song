@@ -21,7 +21,7 @@ import customExceptions.UserDoesntExistException;
  */
 public class Game {
 	/** association of type Arraylist with object of type users*/
-	private ArrayList<User> users;
+	private ArrayList<User> users; 
 	/** Association with class User, it's the user that's gonna be added to the arraylist of users */
 	private User user;
 	/** Association with the first Song*/
@@ -160,11 +160,6 @@ public class Game {
 			}else {
 				throw new RequiredFieldsException();
 			}
-
-			/**if(user.getNickname().compareTo(user.getNickname())>=0) {
-
-			}
-			 */
 		}
 	}
 
@@ -174,7 +169,6 @@ public class Game {
 	 * @throws FileNotFoundException -file not found
 	 */
 	public void save() throws IOException, FileNotFoundException{
-		//users.add(new User("Fernanda", "Fernanda", "Femenine", "Fernanda"));
 		File myFile = new File(FILE);
 		ObjectOutputStream oS= null;
 		oS= new ObjectOutputStream(new FileOutputStream(myFile));

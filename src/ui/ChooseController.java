@@ -29,7 +29,7 @@ import model.MusicLibrary;
 import model.Song;
 import util.SoundPlayer;
 
-public class ChooseController {
+public class ChooseController{
 	
 	/** association with game controller to pass the added data to that controller*/
 	private GameController gameController;

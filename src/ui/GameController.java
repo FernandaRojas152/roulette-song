@@ -44,6 +44,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
+import model.Game;
 import model.Image;
 import model.MusicLibrary;
 import model.Song;
@@ -64,6 +65,12 @@ public class GameController {
 	private Image i;
 	
 	private SignController dataUser;
+	
+	private boolean activarObserver = false; 
+	
+	private Game game;
+	
+	private User user;
 	
 	/** association with thread*/
 	private SongObserver songO;
@@ -106,16 +113,28 @@ public class GameController {
 
 	//methods
 	/**
-	 * Constructor's method
+	 * Constructor's method 
 	 */
-	public GameController() {
+	public GameController()  {
+		game= new Game();
+		dataUser= new SignController();
 		i= new Image();
 		roulette= new ImageView();
 		music = new MusicLibrary();
 		r= new Random();
-		songO= new SongObserver();
-		songO.start();
+		
+		
 		updateImage();
+		try {
+			addSongs();
+		} catch (SongAlreadyExistsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		songO= new SongObserver(music);
+		
+		
 	}
 
 	public void init() {
@@ -167,13 +186,36 @@ public class GameController {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
 	
+	public void addSongs() throws SongAlreadyExistsException {
+		
+		
+		music.addSong("Comethru", "/songs/Comethru.wav");
+		music.addSong("Disarm You", "/songs/Disarm You.wav");
+		music.addSong("Stacy", "/songs/Stacy.wav");
+		music.addSong("Tired", "/songs/Tired.wav");
+		
+		
+		SoundPlayer.addSound("Comethru", "/songs/Comethru.wav");
+		SoundPlayer.addSound("Disarm You", "/songs/Disarm You.wav");
+		SoundPlayer.addSound("Stacy", "/songs/Stacy.wav");
+		SoundPlayer.addSound("Tired", "/songs/Tired.wav");
+		
+	
+	
+		
+		
+	}
+	
 	/**
 	 * This method updates the song and play the next song in the list
 	 * @param music -next music
 	 */
-	public void updateMusic(MusicLibrary music) {
-
+	public void updateMusic(MusicLibrary music) { 
 		this.music = music;
+	}
+	
+	public void setActualUser(User user) {
+		this.user= user;
 	}
 
 	/**
@@ -182,6 +224,7 @@ public class GameController {
 	 */
 	@FXML
 	void answer(ActionEvent event) {
+		
 		if(SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
 			SoundPlayer.stopActualSong();
 			TextInputDialog dialog = new TextInputDialog();
@@ -191,15 +234,20 @@ public class GameController {
 
 			Optional<String> result = dialog.showAndWait();
 			if (result.isPresent()){
-				User u= null;
 				try {
+					if(result.get().equals(SoundPlayer.actualSong)) {
+						
+					}
 					System.out.println("funciono");
 				}catch(Exception e) {
 					e.getMessage();
 				}
 			}
 			SoundPlayer.startSound(song.getNext().getFileP());
-			songO.setNextSong(song.getNext());
+
+			
+			// continuar
+			
 		}
 	}
 
@@ -207,24 +255,28 @@ public class GameController {
 	 * This method stops the rotation of the image and then plays the song,sorted or randomly 
 	 * @param event 
 	 */
-	@FXML
+	@FXML 
 	void stop(ActionEvent event) {
 		i.setSpin(false);
 		if(music.isEmpty()) {
 			System.out.println("No hay canciones");
 		}else {
-			if(sort.isSelected()) {
-				for(int i=0; i< music.getSize(); i++) {
-					SoundPlayer.addSound(music.getSong(i).getSongName(), music.getFirst().getFileP());
-					SoundPlayer.startSound(music.getSong(i).getSongName());
-				}
-			}else if(random.isSelected()) {
+			 if(random.isSelected()) {
+				 
 					int index = (int) (Math.random() * music.getSize());
 	                song = music.getSong(index);
-	                //SoundPlayer.addSound(song, path);
+	                SoundPlayer.startSound(song.getSongName());
 			}
 			System.out.println(music.getFirst().getSongName());
 			System.out.println(music.getFirst().getFileP());
+			
+			
+			if(!activarObserver) {
+				
+				songO.start();
+				activarObserver = true;
+			}
+			
 		}
 	}
 }

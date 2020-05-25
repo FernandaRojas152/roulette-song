@@ -160,6 +160,27 @@ public class MusicLibrary{
 		return finded;
 	}
 	
+	public Song findSongByName(String name) {
+		
+		Song toFind = null;
+		Song aux = first;
+		boolean finded = false;
+		
+		while(aux!=null && !finded) {
+			
+			if(aux.getSongName().equalsIgnoreCase(name)) {
+				toFind = aux;
+				finded = true;
+			}
+			aux = aux.getNext();
+			
+		}
+		
+		return toFind;
+		
+		
+	}
+	
 	/**
 	 * sort songs by bubble sort
 	 */

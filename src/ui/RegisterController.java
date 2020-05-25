@@ -71,12 +71,7 @@ public class RegisterController {
 	@FXML
 	void registerUser(ActionEvent event) {
 		try {
-			user= new User(txtName.getText(), txtNickname.getText(), txtGender.getText(), txtPassword.getText());
-			System.out.println(txtName.getText());
-			System.out.println(txtNickname.getText());
-			System.out.println(txtGender.getText());
-			System.out.println(txtPassword.getText());
-			
+			user= new User(txtName.getText(), txtNickname.getText(), txtGender.getText(), txtPassword.getText());		
 			addUser(user);
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("User created!");
