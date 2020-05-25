@@ -89,21 +89,26 @@ public class ChooseController{
 				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
 					throw new SongAlreadyExistsException();
 				}
-				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
-				System.out.println("\\");
-				try {
-					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}			
+//				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
+//				System.out.println("\\");
+//				try {
+//					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
+//				} catch (FileNotFoundException e) {
+//					e.printStackTrace();
+//				} catch (IOException e2) {
+//					e2.printStackTrace();
+//				}			
 				
 				String name = selectedfile.get(i).getName();
-				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
+//				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
+				String path = selectedfile.get(i).getPath();
+				System.out.println(path);
 				
-				music.addSong(name, "/songs/"+name);
+//				music.addSong(name, "/songs/"+name);
 //				SoundPlayer.addSound(name, "/songs/"+name); 
+				
+
+				
 				
 				gameController.updateMusic(music);
 				System.out.println(selectedfile.get(i).getName());				
@@ -121,7 +126,6 @@ public class ChooseController{
 			}
 		}
 	}
-
 
 	/**
 	 * This method will load a list that has been saved with song name and path.

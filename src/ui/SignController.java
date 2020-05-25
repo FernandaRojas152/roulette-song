@@ -59,12 +59,12 @@ public class SignController {
 			String pass = String.valueOf(txtPassword.getText());
 			if (users.getPassword().equalsIgnoreCase(pass)
 					&& users.getNickname().equalsIgnoreCase(txtNickname.getText())) {
-//				game.setUser(users);
+				game.setUser(users);
 				System.out.println("Welcome:  " + users.getNickname());
 				System.out.println(game.getUser());
 				gameC.setActualUser(users);
-				//stage1 = (Stage) logIn.getScene().getWindow();
-				//stage1.close();
+				stage1 = (Stage) logIn.getScene().getWindow();
+				stage1.close();
 				
 			}
 		} catch (Exception e) {
