@@ -21,9 +21,9 @@ import customExceptions.UserDoesntExistException;
  */
 public class Game {
 	/** association of type Arraylist with object of type users*/
-	private static ArrayList<User> users;
+	private ArrayList<User> users;
 	/** Association with class User, it's the user that's gonna be added to the arraylist of users */
-	private static User user;
+	private User user;
 	/** Association with the first Song*/
 	private Song first;
 	/** Association with the root in Artist*/
@@ -31,7 +31,7 @@ public class Game {
 	/** Constant that saves the data of the serializable User */
 	public static final String FILE = "resources/data/gameDate.txt";
 	/** boolean*/
-	public static boolean s;
+	public boolean s;
 
 	//Methods
 	/**
@@ -45,7 +45,7 @@ public class Game {
 	}
 	
 	/**
-	 *  This method get's the user in the game
+	 *  This method get's the actual user in the game
 	 * @return user -object of user
 	 */
 	public User getUser() {
@@ -72,8 +72,8 @@ public class Game {
 	 * This method modifies the list of users in the game
 	 * @param user- the modified list
 	 */
-	public static void setUsers(ArrayList<User> user) {
-		users = user;
+	public void setUsers(ArrayList<User> users) {
+		this.users= users;
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class Game {
 	 * @throws IOException -saving problems
 	 * @throws FileNotFoundException -file not found
 	 */
-	public static void save() throws IOException, FileNotFoundException{
+	public void save() throws IOException, FileNotFoundException{
 		//users.add(new User("Fernanda", "Fernanda", "Femenine", "Fernanda"));
 		File myFile = new File(FILE);
 		ObjectOutputStream oS= null;
@@ -188,7 +188,7 @@ public class Game {
 	 * @throws ClassNotFoundException -problems with reading data
 	 * reads the data on the serialize txt file
 	 */
-	public static void readData() throws FileNotFoundException, IOException, ClassNotFoundException {
+	public void readData() throws FileNotFoundException, IOException, ClassNotFoundException {
 		File myFile = new File(FILE);
 		ObjectInputStream oS= null;
 		ArrayList<User> us= null;

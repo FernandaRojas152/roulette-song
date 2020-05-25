@@ -73,13 +73,12 @@ public class UserController {
 	 */
 	@FXML
 	public void showUserInformation(ActionEvent event) throws UserDoesntExistException, FileNotFoundException, ClassNotFoundException, IOException {
-		Game.readData();
+		game.readData();
 		TextInputDialog dialog = new TextInputDialog();
 		dialog.setTitle("Choose user");
 		dialog.setHeaderText("You can see the ");
 		dialog.setContentText("Please enter your name:");
 
-		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
 			User u= null;

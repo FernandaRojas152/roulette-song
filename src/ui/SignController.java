@@ -65,6 +65,7 @@ public class SignController {
 			if(users.getPassword().equalsIgnoreCase(pass) && users.getNickname().equalsIgnoreCase(txtNickname.getText())) {
 				game.setUser(users);
 				System.out.println("Welcome:  "+ users.getNickname());
+				System.out.println(game.getUser());
 			}
 		} catch (Exception e) {
 			Platform.runLater(() -> {

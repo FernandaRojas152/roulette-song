@@ -43,6 +43,7 @@ public class RegisterController {
 	private TextField txtGender;
 
 	/**A Text Field that it's gonna get the password */
+	@FXML
 	private PasswordField txtPassword;
 
 	@FXML
@@ -55,6 +56,10 @@ public class RegisterController {
 	 */
 	public RegisterController() {
 		game= new Game();
+		txtName= new TextField();
+		txtNickname= new TextField();
+		txtGender= new TextField();
+		txtPassword= new PasswordField();
 	}
 
 	/**
@@ -67,6 +72,11 @@ public class RegisterController {
 	void registerUser(ActionEvent event) {
 		try {
 			user= new User(txtName.getText(), txtNickname.getText(), txtGender.getText(), txtPassword.getText());
+			System.out.println(txtName.getText());
+			System.out.println(txtNickname.getText());
+			System.out.println(txtGender.getText());
+			System.out.println(txtPassword.getText());
+			
 			addUser(user);
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("User created!");

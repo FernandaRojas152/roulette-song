@@ -1,2 +1,3 @@
 
 Comethru.wav;/songs/Comethru.wav
+Disarm You.wav;/songs/Disarm You.wav

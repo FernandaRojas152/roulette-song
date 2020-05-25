@@ -71,7 +71,7 @@ public class PrincipalWindowController {
 	void logIn(ActionEvent event) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterUser.fxml"));
 		Scene scene= new Scene(fxmlLoader.load());
-		scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
 		Stage stage= new Stage();
 		stage.setTitle("Log in");
 		stage.setScene(scene);

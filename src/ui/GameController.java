@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.sound.sampled.Clip;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javafx.event.ActionEvent;
@@ -40,15 +41,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import model.Image;
 import model.MusicLibrary;
 import model.Song;
+import model.User;
 import thread.ImageThread;
 import thread.SongObserver;
 import util.SoundPlayer;
 import customExceptions.SongAlreadyExistsException;
+import customExceptions.UserDoesntExistException;
 
 /**
  * @version May 16th 2020
@@ -58,6 +62,8 @@ import customExceptions.SongAlreadyExistsException;
 public class GameController {
 	/** association with the image that's going to be rotating*/
 	private Image i;
+	
+	private SignController dataUser;
 	
 	/** association with thread*/
 	private SongObserver songO;
@@ -178,6 +184,20 @@ public class GameController {
 	void answer(ActionEvent event) {
 		if(SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
 			SoundPlayer.stopActualSong();
+			TextInputDialog dialog = new TextInputDialog();
+			dialog.setTitle("Answer the name of song");
+			dialog.setHeaderText("If your answer it's correct, you will obtain 10 points!");
+			dialog.setContentText("Please enter just the name of the song:");
+
+			Optional<String> result = dialog.showAndWait();
+			if (result.isPresent()){
+				User u= null;
+				try {
+					System.out.println("funciono");
+				}catch(Exception e) {
+					e.getMessage();
+				}
+			}
 			SoundPlayer.startSound(song.getNext().getFileP());
 			songO.setNextSong(song.getNext());
 		}
@@ -190,7 +210,6 @@ public class GameController {
 	@FXML
 	void stop(ActionEvent event) {
 		i.setSpin(false);
-
 		if(music.isEmpty()) {
 			System.out.println("No hay canciones");
 		}else {
@@ -200,7 +219,9 @@ public class GameController {
 					SoundPlayer.startSound(music.getSong(i).getSongName());
 				}
 			}else if(random.isSelected()) {
-
+					int index = (int) (Math.random() * music.getSize());
+	                song = music.getSong(index);
+	                //SoundPlayer.addSound(song, path);
 			}
 			System.out.println(music.getFirst().getSongName());
 			System.out.println(music.getFirst().getFileP());
