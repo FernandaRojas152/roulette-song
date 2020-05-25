@@ -7,12 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UserController">
    <children>
-      <Label fx:id="nick" layoutX="55.0" layoutY="50.0" text="Nickname:">
+      <Label fx:id="nick" layoutX="66.0" layoutY="50.0" text="Nickname:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="g" layoutX="69.0" layoutY="166.0" text="Gender:">
+      <Label fx:id="g" layoutX="66.0" layoutY="166.0" text="Gender:">
          <font>
             <Font size="24.0" />
          </font>
@@ -27,16 +27,16 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <Label fx:id="nickname" layoutX="375.0" layoutY="50.0" text="Fernanda" visible="false">
+      <Label fx:id="nickname" layoutX="389.0" layoutY="50.0" text="Fernanda" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="gender" layoutX="398.0" layoutY="166.0" text="Female" visible="false">
+      <Label fx:id="gender" layoutX="386.0" layoutY="166.0" text="Female" visible="false">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="451.0" layoutY="354.0" mnemonicParsing="false" onAction="#showUserInformation" text="Show Information!" />
+      <Button layoutX="448.0" layoutY="354.0" mnemonicParsing="false" onAction="#showUserInformation" text="Show Information!" />
    </children>
 </AnchorPane>

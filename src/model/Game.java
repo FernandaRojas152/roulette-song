@@ -21,9 +21,9 @@ import customExceptions.UserDoesntExistException;
  */
 public class Game {
 	/** association of type Arraylist with object of type users*/
-	private ArrayList<User> users; 
+	private static ArrayList<User> users; 
 	/** Association with class User, it's the user that's gonna be added to the arraylist of users */
-	private User user;
+	private static User user;
 	/** Association with the first Song*/
 	private Song first;
 	/** Association with the root in Artist*/
@@ -31,7 +31,7 @@ public class Game {
 	/** Constant that saves the data of the serializable User */
 	public static final String FILE = "resources/data/gameDate.txt";
 	/** boolean*/
-	public boolean s;
+	public static boolean s;
 
 	//Methods
 	/**
@@ -72,8 +72,8 @@ public class Game {
 	 * This method modifies the list of users in the game
 	 * @param user- the modified list
 	 */
-	public void setUsers(ArrayList<User> users) {
-		this.users= users;
+	public static void setUsers(ArrayList<User> user) {
+		users= user;
 	}
 	
 	/**
@@ -168,7 +168,7 @@ public class Game {
 	 * @throws IOException -saving problems
 	 * @throws FileNotFoundException -file not found
 	 */
-	public void save() throws IOException, FileNotFoundException{
+	public static void save() throws IOException, FileNotFoundException{
 		File myFile = new File(FILE);
 		ObjectOutputStream oS= null;
 		oS= new ObjectOutputStream(new FileOutputStream(myFile));

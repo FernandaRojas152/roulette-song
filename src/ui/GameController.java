@@ -110,6 +110,9 @@ public class GameController {
 
 	@FXML
 	private RadioButton sort;
+	
+	@FXML
+    private ImageView gif;
 
 	//methods
 	/**
@@ -187,23 +190,15 @@ public class GameController {
 	}
 
 	public void addSongs() throws SongAlreadyExistsException {
-
-
 		music.addSong("Comethru", "/songs/Comethru.wav");
 		music.addSong("Disarm You", "/songs/Disarm You.wav");
 		music.addSong("Stacy", "/songs/Stacy.wav");
 		music.addSong("Tired", "/songs/Tired.wav");
 
-
 		SoundPlayer.addSound("Comethru", "/songs/Comethru.wav");
 		SoundPlayer.addSound("Disarm You", "/songs/Disarm You.wav");
 		SoundPlayer.addSound("Stacy", "/songs/Stacy.wav");
 		SoundPlayer.addSound("Tired", "/songs/Tired.wav");
-
-
-
-
-
 	}
 
 	/**
@@ -224,30 +219,27 @@ public class GameController {
 	 */
 	@FXML
 	void answer(ActionEvent event) {
-
+		gif.setVisible(false);
 		if(SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
 			SoundPlayer.stopActualSong();
+			System.out.println(SoundPlayer.actualSong);
 			TextInputDialog dialog = new TextInputDialog();
 			dialog.setTitle("Answer the name of song");
 			dialog.setHeaderText("If your answer it's correct, you will obtain 10 points!");
-			dialog.setContentText("Please enter just the name of the song:");
+			dialog.setContentText("Please enter just the NAME of the song:");
 
 			Optional<String> result = dialog.showAndWait();
 			if (result.isPresent()){
 				try {
 					if(result.get().equals(SoundPlayer.actualSong)) {
+						System.out.println("Correcto");
 						game.getUser().accumulatePoints(10);
 					}
-					System.out.println("funciono");
 				}catch(Exception e) {
 					e.getMessage();
 				}
 			}
-			SoundPlayer.startSound(song.getNext().getFileP());
-
-
-			// continuar
-
+			//SoundPlayer.startSound(song.getNext().getFileP());
 		}
 	}
 
@@ -259,11 +251,12 @@ public class GameController {
 	void stop(ActionEvent event) {
 		System.out.println(game.getUser());
 		i.setSpin(false);
+		gif.setVisible(true);
 		if(music.isEmpty()) {
 			System.out.println("No hay canciones");
 		}else {
 			if(sort.isSelected()) {
-				
+				SoundPlayer.startSound(music.getFirst().getSongName());
 			}else if(random.isSelected()) {
 				
 				Random ran = new Random();
@@ -271,8 +264,7 @@ public class GameController {
 				int index = (int) (ran.nextInt(music.getSize()));
 				SoundPlayer.startSound(music.getSong(index).getSongName());
 			}
-
-
+			
 			if(!activarObserver) {
 
 				songO.start();

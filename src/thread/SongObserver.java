@@ -18,7 +18,7 @@ public class SongObserver extends Thread {
 	 * Constructor's method
 	 */
 	public SongObserver(MusicLibrary music) {
-
+		setDaemon(true);
 		this.music = music;
 	}
 
@@ -34,20 +34,13 @@ public class SongObserver extends Thread {
 				if (SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
 					if (actual.getMicrosecondPosition() == actual.getMicrosecondLength()) {
 						SoundPlayer.stopActualSong();
-				
 						Song next = music.findSongByName(SoundPlayer.actualSong).getNext();
-						
-
 						if(next != null) {
 						SoundPlayer.startSound(next.getSongName());
-						
 						System.out.println("Reproduciendo "+ next.getSongName());
 						}else {
-							
 							System.out.println("Ya no hay canciones");
-							
 						}
-						
 					}
 				}
 			} catch (Exception e) {

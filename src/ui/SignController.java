@@ -61,11 +61,7 @@ public class SignController {
 					&& users.getNickname().equalsIgnoreCase(txtNickname.getText())) {
 				game.setUser(users);
 				System.out.println("Welcome:  " + users.getNickname());
-				System.out.println(game.getUser());
-				gameC.setActualUser(users);
-				stage1 = (Stage) logIn.getScene().getWindow();
-				stage1.close();
-				
+				gameC.setActualUser(game.getUser());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
