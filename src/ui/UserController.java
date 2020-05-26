@@ -23,10 +23,6 @@ import model.User;
 public class UserController {
 	//associations
 	/** */
-	private ArrayList<User> users;
-	/** */
-	private User user;
-	/** */
 	private Game game;
 	/** */
 	private SignController sign;
@@ -61,7 +57,6 @@ public class UserController {
 	 * Constructor's method
 	 */
 	public UserController() {
-		users= new ArrayList<>();
 		game= new Game();
 		sign= new SignController();
 	}
