@@ -24,7 +24,7 @@ public class SignController {
 	private Game game;
 	private User users;
 	private Stage stage1;
-	private GameController gameC;
+	private GameController gameController;
 	// Attributes
 	/** A Text Field that it's going to get the nickname */
 	@FXML
@@ -44,6 +44,10 @@ public class SignController {
 	public SignController() {
 		game = new Game();
 	}
+	
+	public void initialize() {
+		
+	}
 
 	/**
 	 * This method will login the user and catch all the exceptions that can happen
@@ -52,7 +56,6 @@ public class SignController {
 	 */
 	@FXML
 	void signIn(ActionEvent event) {
-
 		try {
 			game.readData();
 			users = game.searchUser(txtNickname.getText());
@@ -61,7 +64,7 @@ public class SignController {
 					&& users.getNickname().equalsIgnoreCase(txtNickname.getText())) {
 				game.setUser(users);
 				System.out.println("Welcome:  " + users.getNickname());
-				gameC.setActualUser(game.getUser());
+				System.out.println(getActualUser());
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -70,5 +73,17 @@ public class SignController {
 				dialog.show();
 			});
 		}
+	}
+	
+	public User getActualUser() {
+		return game.getUser();
+	}
+	
+	public void setActualUser(User users) {
+		this.users= users;
+	}
+	public void setGameController(GameController gameController) {
+
+		this.gameController = gameController;
 	}
 }

@@ -64,13 +64,10 @@ public class GameController {
 	/** association with the image that's going to be rotating*/
 	private Image i;
 
-	private SignController dataUser;
-
-	private boolean activarObserver = false; 
-
+	private boolean activarObserver = false;
+	
+	private SignController sign;
 	private Game game;
-
-	private User user;
 
 	/** association with thread*/
 	private SongObserver songO;
@@ -120,12 +117,11 @@ public class GameController {
 	 */
 	public GameController()  {
 		game= new Game();
-		dataUser= new SignController();
 		i= new Image();
 		roulette= new ImageView();
 		music = new MusicLibrary();
 		r= new Random();
-
+		sign= new SignController();
 
 		updateImage();
 		try {
@@ -142,6 +138,7 @@ public class GameController {
 
 	public void init() {
 		stopButton.setOnAction(buttonHandler);
+		sign.getActualUser();
 	}
 
 
@@ -208,9 +205,13 @@ public class GameController {
 	public void updateMusic(MusicLibrary music) { 
 		this.music = music;
 	}
-
+	
+	/**
+	 * 
+	 * @param user
+	 */
 	public void setActualUser(User user) {
-		this.user= user;
+		game.setUser(user);
 	}
 
 	/**
@@ -220,6 +221,7 @@ public class GameController {
 	@FXML
 	void answer(ActionEvent event) {
 		gif.setVisible(false);
+		//System.out.println(sign.getActualUser());
 		if(SoundPlayer.actualSong != null && !SoundPlayer.actualSong.equals("")) {
 			SoundPlayer.stopActualSong();
 			System.out.println(SoundPlayer.actualSong);
@@ -234,6 +236,7 @@ public class GameController {
 					if(result.get().equals(SoundPlayer.actualSong)) {
 						System.out.println("Correcto");
 						game.getUser().accumulatePoints(10);
+						System.out.println(game.getUser().getPoints());
 					}
 				}catch(Exception e) {
 					e.getMessage();

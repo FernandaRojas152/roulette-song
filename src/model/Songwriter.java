@@ -4,19 +4,21 @@ package model;
  * @author Fernanda
  * Class Songwriter
  */
-public class Songwriter extends Person implements Comparable<Songwriter>{
-	/**
-	 * constant
-	 */
-	private static final long serialVersionUID = 1L;
+public class Songwriter extends Genre implements Comparable<Songwriter>{
 	private String type;
 	private String country;
 
 	private Songwriter left;
 	private Songwriter right;
-	
-	public Songwriter(String name, String type, String country) {
-		super(name);
+
+	/**
+	 * 
+	 * @param name
+	 * @param rythm
+	 * @param duration
+	 */
+	public Songwriter(String name, String rythm, int duration, String type, String country) {
+		super(name, rythm, duration);
 		this.type= type;
 		this.country= country;
 	}
