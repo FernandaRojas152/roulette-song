@@ -17,6 +17,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -24,6 +25,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 import model.Game;
 import model.MusicLibrary;
@@ -260,8 +262,14 @@ public class ChooseController{
 	}
 	
 	@FXML
-    void morePoints(ActionEvent event) {
-
+    void morePoints(ActionEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Question.fxml"));
+		Scene scene= new Scene(fxmlLoader.load());
+		//scene.getStylesheets().add(getClass().getResource("/data/fontstyle.css").toExternalForm());
+		Stage stage= new Stage();
+		stage.setTitle("Get more points!");
+		stage.setScene(scene);
+		stage.show();
     }
 
 }

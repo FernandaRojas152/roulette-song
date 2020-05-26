@@ -15,7 +15,6 @@ public class Song implements Comparable<Song>{
 	public String songName;
 	/** A string that saves the path of the song added*/
 	public String fileP;
-	
 	//Methods
 	/**
 	 * Constructor's method
