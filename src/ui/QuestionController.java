@@ -18,9 +18,14 @@ public class QuestionController {
 	/** Association with Game class*/
 	private Game game;
 	
+	/**
+	 * Constructor's method
+	 */
 	public QuestionController() {
 		game= new Game();
+		sign= new SignController();
 	}
+	
 	
 	public void initialize() {
 		
@@ -34,7 +39,13 @@ public class QuestionController {
 
     @FXML
     private RadioButton onedirection;
-
+    
+    /**
+     * 
+     * @param event
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     @FXML
     void submit(ActionEvent event) throws FileNotFoundException, IOException {
     	sign.getActualUser();

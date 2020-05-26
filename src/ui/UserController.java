@@ -22,9 +22,14 @@ import model.User;
 
 public class UserController {
 	//associations
+	/** */
 	private ArrayList<User> users;
+	/** */
 	private User user;
+	/** */
 	private Game game;
+	/** */
+	private SignController sign;
 
 	//Attributes
 	/** A Text Field that it's going to get the nickname*/
@@ -58,14 +63,15 @@ public class UserController {
 	public UserController() {
 		users= new ArrayList<>();
 		game= new Game();
+		sign= new SignController();
 	}
 
 	public void initialize() {
 	}
 
-	
+
 	/**
-	 *This method shows the info of the user (nickname, gender, points)
+	 *This method shows the info of the actual user that logins in the game (nickname, gender and points)
 	 * @throws UserDoesntExistException -user it's not in the game
 	 * @throws IOException  -IOException 
 	 * @throws ClassNotFoundException -Class not found
@@ -74,26 +80,12 @@ public class UserController {
 	 */
 	@FXML
 	public void showUserInformation(ActionEvent event) throws UserDoesntExistException, FileNotFoundException, ClassNotFoundException, IOException {
-		game.readData();
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("Choose user");
-		dialog.setHeaderText("You can see the ");
-		dialog.setContentText("Please enter your name:");
-
-		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-			User u= null;
-			try {
-				u= game.searchUser(result.get());
-				nickname.setText(u.getNickname());
-				gender.setText(u.getGender());
-				points.setText(String.valueOf(u.getPoints()));
-				nickname.setVisible(true);
-				gender.setVisible(true);
-				points.setVisible(true);
-			}catch(UserDoesntExistException e) {
-				e.getMessage();
-			}
-		}
+		sign.getActualUser();
+		nickname.setText(game.getUser().getNickname());
+		gender.setText(game.getUser().getGender());
+		points.setText(String.valueOf(game.getUser().getPoints()));
+		nickname.setVisible(true);
+		gender.setVisible(true);
+		points.setVisible(true);
 	}
 }

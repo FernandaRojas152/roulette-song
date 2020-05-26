@@ -26,6 +26,7 @@ public class SignController {
 	private Stage stage1;
 	private GameController gameController;
 	private ChooseController choose;
+	private QuestionController question;
 	// Attributes
 	/** A Text Field that it's going to get the nickname */
 	@FXML
@@ -91,5 +92,9 @@ public class SignController {
 	public void setChooseController(ChooseController choose) {
 
 		this.choose = choose;
+	}
+	
+	public void setQuestionController(QuestionController question) {
+		this.question= question;
 	}
 }
