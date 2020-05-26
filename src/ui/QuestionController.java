@@ -40,12 +40,15 @@ public class QuestionController {
     	sign.getActualUser();
     	if(taylor.isSelected()) {
     		artist= new Artist("Taylor Swift", "England", "Global Music");
+    		game.addArtist(artist);
     		game.getUser().accumulatePoints(15);
     	}else if(ed.isSelected()) {
     		artist= new Artist("Ed Sheeran", "England", "American records");
+    		game.addArtist(artist);
     		game.getUser().accumulatePoints(15);
     	}else if(onedirection.isSelected()) {
     		artist= new Artist("One Direction", "England", "SYNCO records");
+    		game.addArtist(artist);
     		game.getUser().accumulatePoints(15);
     	}else {
     		System.out.println("You didn't choose!");

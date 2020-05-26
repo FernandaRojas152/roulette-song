@@ -28,6 +28,8 @@ public class Game {
 	private Song first;
 	/** Association with the root in Artist*/
 	private static Artist root;
+	/** Association with song writer*/
+	private Songwriter writer;
 	/** Constant that saves the data of the serializable User */
 	public static final String FILE = "resources/data/gameDate.txt";
 	
@@ -95,6 +97,23 @@ public class Game {
 		this.root = root;
 	}
 	
+	
+	/**
+	 * This method gets the root in the binary search tree
+	 * @return root -the root of the tree
+	 */
+	public Songwriter getWriter() {
+		return writer;
+	}
+	
+	/**
+	 * This method modifies the root in the binary search tree
+	 * @param root -the new root
+	 */
+	public void setWriter(Songwriter writer) {
+		this.writer = writer;
+	}
+
 	/**
 	 * This method will search if the userExists already has been registered and exists in the game.
 	 * @param nickname -name that the user has and it's going to be the one that it's going to be
@@ -281,6 +300,37 @@ public class Game {
 	 */
 	public void addArtist(Artist a) {
 		addArtist(a, this.root);
+	}
+	
+	/**
+	 * private method of adding an song writer using recursion
+	 * @param a an song writer
+	 * @param p root of class song writer.
+	 */
+	private void addSongwriter(Songwriter a, Songwriter p) {
+		if(p== null) {
+			this.setWriter(a);
+		}else if(a.getType().compareTo(p.getType())<=0) {
+			if(p.getLeft()== null) {
+				p.setLeft(a);
+			}else {
+				addSongwriter(a, p.getLeft());
+			}
+		}else{
+			if(p.getRight()== null) {
+				p.setRight(a);
+			}else {
+				addSongwriter(a, p.getRight());
+			}
+		}
+	}
+	
+	/**
+	 * public method to add an song writer in the binary search tree
+	 * @param a -artist that's gonna be added
+	 */
+	public void addSongWriter(Songwriter a) {
+		addSongwriter(a, this.writer);
 	}
 	
 	/**

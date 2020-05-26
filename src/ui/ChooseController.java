@@ -278,15 +278,19 @@ public class ChooseController{
 		sign.getActualUser();
     	if(taylor.isSelected()) {
     		writer= new Songwriter("Taylor Swift", "country", 3, "Songwriter");
+    		game.addSongWriter(writer);
     		game.getUser().accumulatePoints(10);
     	}else if(bob.isSelected()) {
     		writer= new Songwriter("Bob Marley", "pop", 4, "lyricist");
+    		game.addSongWriter(writer);
     		game.getUser().accumulatePoints(10);
     	}else if(paul.isSelected()) {
     		writer= new Songwriter("Paul mcCartney", "indie", 6, "lyricist");
+    		game.addSongWriter(writer);
     		game.getUser().accumulatePoints(10);
     	}else if(lennon.isSelected()) {
     		writer= new Songwriter("John Lennon", "pop", 5, "Songwriter");
+    		game.addSongWriter(writer);
     		game.getUser().accumulatePoints(10);
     	}else {
     		System.out.println("You didn't choose!");
