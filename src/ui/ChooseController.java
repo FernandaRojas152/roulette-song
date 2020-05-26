@@ -25,50 +25,68 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import model.Game;
 import model.MusicLibrary;
 import model.Song;
 import util.SoundPlayer;
 
 public class ChooseController{
-	
+
 	/** association with game controller to pass the added data to that controller*/
 	private GameController gameController;
-	
+
+	/** Association with sign controller to get the actual user in the game*/
+	private SignController sign;
+
 	/**association with music library which it's the one who controls the linked list */
 	private MusicLibrary music;
-	
+
+	/** Association with Game class*/
+	private Game game;
+
 	/** association with the song that's going to be playing*/
 	private Song song;
-	
+
 	/**Gets the path for the persistence songs data*/ 
 	public static final String PATH = "resources/data/songData.txt";
 
 	/**Gets the path for adding songs*/
 	public static final String PATH_SONGS ="res/songs";
-	
+
 	/** association with the song that's going to be playing*/
 	public String last= "";
-	
+
 	/** association with the song that's going to be playing*/
 	private FXMLLoader loader;
-	
+
 	//private GameController GameController= loader.getController();
 	private ListView list;
 
 	@FXML
 	private Button add;
-	
+
 	@FXML
 	private TextField text;
-	
+
 	/**
 	 * Constructor's method
 	 */
 	public ChooseController() {
+		game= new Game();
 		music= new MusicLibrary();
 		song=null;
 		list = new ListView<Song>();
+		sign= new SignController();
 	}
+
+	public void initialize() {
+		add.setDisable(true);
+		if(game.getUser().getPoints() > 100) {
+			add.setDisable(false);
+		}
+	}
+	
+	
 	/**
 	 * This will add the song that the user chooses to a listview and the doubly linked list.
 	 * @param event
@@ -78,7 +96,9 @@ public class ChooseController{
 	 * file path.
 	 */
 	@FXML
-	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{ 
+	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{
+		sign.getActualUser();
+
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Song File");
 		//file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav", ".mp3"));
@@ -89,31 +109,30 @@ public class ChooseController{
 				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
 					throw new SongAlreadyExistsException();
 				}
-//				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
-//				System.out.println("\\");
-//				try {
-//					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
-//				} catch (FileNotFoundException e) {
-//					e.printStackTrace();
-//				} catch (IOException e2) {
-//					e2.printStackTrace();
-//				}			
-				
+				//				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
+				//				System.out.println("\\");
+				//				try {
+				//					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
+				//				} catch (FileNotFoundException e) {
+				//					e.printStackTrace();
+				//				} catch (IOException e2) {
+				//					e2.printStackTrace();
+				//				}			
+
 				String name = selectedfile.get(i).getName();
-//				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
+				//				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
 				String path = selectedfile.get(i).getPath();
 				System.out.println(path);
-				
-//				music.addSong(name, "/songs/"+name);
-//				SoundPlayer.addSound(name, "/songs/"+name); 
-				
 
-				
-				
+				//				music.addSong(name, "/songs/"+name);
+				//				SoundPlayer.addSound(name, "/songs/"+name); 
+
+
+
+
 				gameController.updateMusic(music);
 				System.out.println(selectedfile.get(i).getName());				
 				System.out.println(path);
-				
 			}
 		}else {
 			try {
@@ -170,7 +189,7 @@ public class ChooseController{
 	}
 
 	/**
-	 * 
+	 * Makes the information persistent
 	 * @param d
 	 */
 	public void saveData(String d) {
@@ -213,7 +232,7 @@ public class ChooseController{
 		System.out.println("bien");
 		saveData(PATH);
 	}
-	
+
 	public void transferFile(InputStream source, OutputStream target) {
 
 		try {
@@ -234,9 +253,9 @@ public class ChooseController{
 
 
 	}
-	
+
 	public void setGameController(GameController gameController) {
-		
+
 		this.gameController = gameController;
 	}
 

@@ -25,6 +25,7 @@ public class SignController {
 	private User users;
 	private Stage stage1;
 	private GameController gameController;
+	private ChooseController choose;
 	// Attributes
 	/** A Text Field that it's going to get the nickname */
 	@FXML
@@ -44,9 +45,9 @@ public class SignController {
 	public SignController() {
 		game = new Game();
 	}
-	
+
 	public void initialize() {
-		
+
 	}
 
 	/**
@@ -60,8 +61,7 @@ public class SignController {
 			game.readData();
 			users = game.searchUser(txtNickname.getText());
 			String pass = String.valueOf(txtPassword.getText());
-			if (users.getPassword().equalsIgnoreCase(pass)
-					&& users.getNickname().equalsIgnoreCase(txtNickname.getText())) {
+			if (users.getPassword().equalsIgnoreCase(pass) && users.getNickname().equalsIgnoreCase(txtNickname.getText())) {
 				game.setUser(users);
 				System.out.println("Welcome:  " + users.getNickname());
 				System.out.println(getActualUser());
@@ -74,16 +74,22 @@ public class SignController {
 			});
 		}
 	}
-	
+
 	public User getActualUser() {
 		return game.getUser();
 	}
-	
+
 	public void setActualUser(User users) {
 		this.users= users;
 	}
+	
 	public void setGameController(GameController gameController) {
 
 		this.gameController = gameController;
+	}
+
+	public void setChooseController(ChooseController choose) {
+
+		this.choose = choose;
 	}
 }

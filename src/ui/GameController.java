@@ -127,13 +127,9 @@ public class GameController {
 		try {
 			addSongs();
 		} catch (SongAlreadyExistsException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		songO= new SongObserver(music);
-
-
 	}
 
 	public void init() {
@@ -185,7 +181,11 @@ public class GameController {
 	public void updateImage() {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
-
+	
+	/**
+	 * This method adds the predetermined songs
+	 * @throws SongAlreadyExistsException -when a song already exists in the game
+	 */
 	public void addSongs() throws SongAlreadyExistsException {
 		music.addSong("Comethru", "/songs/Comethru.wav");
 		music.addSong("Disarm You", "/songs/Disarm You.wav");
@@ -207,8 +207,8 @@ public class GameController {
 	}
 	
 	/**
-	 * 
-	 * @param user
+	 * Modifies the actual user in the game
+	 * @param user -the user who logs in
 	 */
 	public void setActualUser(User user) {
 		game.setUser(user);
@@ -216,7 +216,7 @@ public class GameController {
 
 	/**
 	 * When the user knows the answer, he can click on this button and answer the name of the song
-	 * @param event
+	 * @param event -event
 	 */
 	@FXML
 	void answer(ActionEvent event) {
@@ -237,6 +237,15 @@ public class GameController {
 						System.out.println("Correcto");
 						game.getUser().accumulatePoints(10);
 						System.out.println(game.getUser().getPoints());
+						Platform.runLater(() -> {
+							Alert dialog2 = new Alert(AlertType.INFORMATION, "CONGRATULATIONS! YOU HAVE WON", ButtonType.OK);
+							dialog2.show();
+						});
+					}else {
+						Platform.runLater(() -> {
+							Alert dialog3 = new Alert(AlertType.ERROR, "WRONG ANSWER :(", ButtonType.OK);
+							dialog3.show();
+						});
 					}
 				}catch(Exception e) {
 					e.getMessage();
