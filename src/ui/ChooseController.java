@@ -61,7 +61,10 @@ public class ChooseController{
 
 	//private GameController GameController= loader.getController();
 	private ListView list;
-
+	
+	@FXML
+    private Button getMorePoints;
+	
 	@FXML
 	private Button add;
 
@@ -75,18 +78,18 @@ public class ChooseController{
 		game= new Game();
 		music= new MusicLibrary();
 		song=null;
-		list = new ListView<Song>();
+		list= new ListView<>();
 		sign= new SignController();
 	}
 
-	public void initialize() {
+	/**public void initialize() {
 		add.setDisable(true);
 		if(game.getUser().getPoints() > 100) {
 			add.setDisable(false);
 		}
-	}
-	
-	
+	}*/
+
+
 	/**
 	 * This will add the song that the user chooses to a listview and the doubly linked list.
 	 * @param event
@@ -98,37 +101,34 @@ public class ChooseController{
 	@FXML
 	void addSong(ActionEvent event)throws FileNotFoundException, SongAlreadyExistsException{
 		sign.getActualUser();
-
 		FileChooser file= new FileChooser();
 		file.setTitle("Open Song File");
 		//file.getExtensionFilters().addAll(new ExtensionFilter("Audio Files", ".wav", ".mp3"));
 		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
 			for(int i=0; i< selectedfile.size(); i++) {
-				list.getItems().add(selectedfile.get(i).getName());
+				list.getItems().add(selectedfile.get(i).getAbsolutePath());
 				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
 					throw new SongAlreadyExistsException();
 				}
-				//				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
-				//				System.out.println("\\");
-				//				try {
-				//					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
-				//				} catch (FileNotFoundException e) {
-				//					e.printStackTrace();
-				//				} catch (IOException e2) {
-				//					e2.printStackTrace();
-				//				}			
+				System.out.println(System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName());
+				System.out.println("\\");
+				try {
+					transferFile(new FileInputStream(selectedfile.get(i).getPath()), new FileOutputStream(new File(System.getProperty("user.dir")+"\\"+"res\\songs\\"+selectedfile.get(i).getName())));
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e2) {
+					e2.printStackTrace();
+				}			
 
 				String name = selectedfile.get(i).getName();
-				//				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
-				String path = selectedfile.get(i).getPath();
+				String path = System.getProperty("user.dir")+"\\"+selectedfile.get(i).getName();
 				System.out.println(path);
 
-				//				music.addSong(name, "/songs/"+name);
-				//				SoundPlayer.addSound(name, "/songs/"+name); 
-
-
-
+				music.addSong(name, "/songs/"+name);
+				System.out.println(music.getLast());
+				//SoundPlayer.addSound(name, "/songs/"+name); 
+				game.getUser().setPoints(game.getUser().getPoints()-100);
 
 				gameController.updateMusic(music);
 				System.out.println(selectedfile.get(i).getName());				
@@ -145,7 +145,7 @@ public class ChooseController{
 			}
 		}
 	}
-
+	
 	/**
 	 * This method will load a list that has been saved with song name and path.
 	 *<b> pre: </b> 
@@ -258,5 +258,10 @@ public class ChooseController{
 
 		this.gameController = gameController;
 	}
+	
+	@FXML
+    void morePoints(ActionEvent event) {
+
+    }
 
 }
