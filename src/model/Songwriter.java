@@ -17,6 +17,7 @@ public class Songwriter extends Genre implements Comparable<Songwriter>{
 	 * @param name -the name of the writer
 	 * @param rythm -type of rhythm he uses
 	 * @param duration -duration of the songs
+	 * @param type -type of writer
 	 */
 	public Songwriter(String name, String rythm, int duration, String type) {
 		super(name, rythm, duration);

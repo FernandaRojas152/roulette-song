@@ -16,6 +16,7 @@ public class SongObserver extends Thread {
 
 	/**
 	 * Constructor's method
+	 * @param music -the music to be updated
 	 */
 	public SongObserver(MusicLibrary music) {
 		setDaemon(true);

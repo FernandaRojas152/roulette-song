@@ -66,10 +66,11 @@ public class UserController {
 	
 	/**
 	 *This method shows the info of the user (nickname, gender, points)
-	 * @throws UserDoesntExistException 
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
-	 * @throws FileNotFoundException 
+	 * @throws UserDoesntExistException -user it's not in the game
+	 * @throws IOException  -IOException 
+	 * @throws ClassNotFoundException -Class not found
+	 * @throws FileNotFoundException -File not found
+	 * @param event -event in the game
 	 */
 	@FXML
 	public void showUserInformation(ActionEvent event) throws UserDoesntExistException, FileNotFoundException, ClassNotFoundException, IOException {

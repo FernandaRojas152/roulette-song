@@ -100,7 +100,7 @@ public class Game {
 	
 	/**
 	 * This method gets the root in the binary search tree
-	 * @return root -the root of the tree
+	 * @return writer -the root of the tree
 	 */
 	public Songwriter getWriter() {
 		return writer;
@@ -108,7 +108,7 @@ public class Game {
 	
 	/**
 	 * This method modifies the root in the binary search tree
-	 * @param root -the new root
+	 * @param writer -the new root
 	 */
 	public void setWriter(Songwriter writer) {
 		this.writer = writer;

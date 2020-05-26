@@ -168,8 +168,8 @@ public class ChooseController{
 	/**
 	 * This method will load a list that has been saved with song name and path.
 	 *<b> pre: </b> 
-	 * @param d
-	 * @throws SongAlreadyExistsException 
+	 * @param d -path of the file
+	 * @throws SongAlreadyExistsException -the song already exists
 	 */
 	public void loadSongs(String d) throws SongAlreadyExistsException {
 		try {
