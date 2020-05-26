@@ -15,7 +15,7 @@ public class MusicLibrary{
 	private Song last;
 	/** list's size*/
 	private int size;
-	
+
 	//Methods
 	/**
 	 * Constructor's method
@@ -24,7 +24,7 @@ public class MusicLibrary{
 		first= last = null;
 		size= 0;
 	}
-	
+
 	/**
 	 * This method gets the first song in the doubly linked list
 	 * @return first -the first song
@@ -80,7 +80,7 @@ public class MusicLibrary{
 	public boolean isEmpty(){
 		return first==null;
 	}
-	
+
 	/**
 	 * This method adds a new song to the doubly linked list
 	 * <b> pre: The list can be null or be already filled with one or multiple nodes</b>
@@ -101,8 +101,8 @@ public class MusicLibrary{
 		}
 		size++;
 	}
-	
-	
+
+
 	/**
 	 * This method gets the index of each node in the linked list
 	 * @param i- index needed in the linked list
@@ -117,11 +117,10 @@ public class MusicLibrary{
 			}
 			temp= temp.getNext();
 			c++;
-			
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * This method gets the specific object at a specific index in the linked list
 	 * @param i -index to be search in the list
@@ -132,7 +131,6 @@ public class MusicLibrary{
 		if(i<0 || i>= size) {
 			return null;
 		}
-		
 		int n=0;
 		Song temp= first;
 		while(n!=i) {
@@ -141,7 +139,7 @@ public class MusicLibrary{
 		}
 		return temp;
 	}
-	
+
 	/**
 	 * This method searches a Song by its name and its path.
 	 * @param name -name of the song
@@ -159,28 +157,26 @@ public class MusicLibrary{
 		}
 		return finded;
 	}
-	
+
+	/**
+	 * This method finds the song by its name
+	 * @param name -name of the song
+	 * @return the song to be found
+	 */
 	public Song findSongByName(String name) {
-		
 		Song toFind = null;
 		Song aux = first;
 		boolean finded = false;
-		
 		while(aux!=null && !finded) {
-			
 			if(aux.getSongName().equalsIgnoreCase(name)) {
 				toFind = aux;
 				finded = true;
 			}
 			aux = aux.getNext();
-			
 		}
-		
 		return toFind;
-		
-		
 	}
-	
+
 	/**
 	 * sort songs by bubble sort
 	 */

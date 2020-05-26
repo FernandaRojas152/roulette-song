@@ -87,7 +87,6 @@ public class UserController {
 				nickname.setText(u.getNickname());
 				gender.setText(u.getGender());
 				points.setText(String.valueOf(u.getPoints()));
-				System.out.println("funciono");
 				nickname.setVisible(true);
 				gender.setVisible(true);
 				points.setVisible(true);

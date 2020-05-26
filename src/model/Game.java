@@ -27,9 +27,12 @@ public class Game {
 	/** Association with the first Song*/
 	private Song first;
 	/** Association with the root in Artist*/
-	private Artist root;
+	private static Artist root;
 	/** Constant that saves the data of the serializable User */
 	public static final String FILE = "resources/data/gameDate.txt";
+	
+	/** Constant that saves the data of the serializable Artist */
+	public static final String FILEARTISTS = "resources/data/dataArtist.txt";
 	/** boolean*/
 	public static boolean s;
 
@@ -331,5 +334,34 @@ public class Game {
 			artistSorted.add(a);
 		}
 		return artistSorted;
+	}
+	
+	/**
+	 * serializes and saves the data.
+	 * @throws IOException -saving problems
+	 * @throws FileNotFoundException -file not found
+	 */
+	public static void saveArtist() throws IOException, FileNotFoundException{
+		File myFile = new File(FILEARTISTS);
+		ObjectOutputStream oS= null;
+		oS= new ObjectOutputStream(new FileOutputStream(myFile));
+		oS.writeObject(root);
+		oS.close();
+	}
+
+	/**
+	 * @throws IOException -problems with reading data
+	 * @throws FileNotFoundException -file doesn't exists
+	 * @throws ClassNotFoundException -problems with reading data
+	 * reads the data on the serialize txt file
+	 */
+	public void readDataArtist() throws FileNotFoundException, IOException, ClassNotFoundException {
+		File myFile = new File(FILE);
+		ObjectInputStream oS= null;
+		if (myFile.exists()) {
+			oS = new ObjectInputStream(new FileInputStream(myFile));
+			root = (Artist)oS.readObject();
+			oS.close();
+		}
 	}
 }

@@ -22,14 +22,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
+import model.Artist;
 import model.Game;
 import model.MusicLibrary;
 import model.Song;
+import model.Songwriter;
 import util.SoundPlayer;
 
 public class ChooseController{
@@ -48,6 +51,9 @@ public class ChooseController{
 
 	/** association with the song that's going to be playing*/
 	private Song song;
+	
+	/**Association with the song writer */
+	private Songwriter writer;
 
 	/**Gets the path for the persistence songs data*/ 
 	public static final String PATH = "resources/data/songData.txt";
@@ -64,6 +70,17 @@ public class ChooseController{
 	//private GameController GameController= loader.getController();
 	private ListView list;
 	
+	@FXML
+    private RadioButton taylor;
+
+    @FXML
+    private RadioButton bob;
+
+    @FXML
+    private RadioButton paul;
+
+    @FXML
+    private RadioButton lennon;
 	@FXML
     private Button getMorePoints;
 	
@@ -84,12 +101,12 @@ public class ChooseController{
 		sign= new SignController();
 	}
 
-	/**public void initialize() {
+	public void initialize() {
 		add.setDisable(true);
 		if(game.getUser().getPoints() > 100) {
 			add.setDisable(false);
 		}
-	}*/
+	}
 
 
 	/**
@@ -109,7 +126,7 @@ public class ChooseController{
 		List<File> selectedfile = file.showOpenMultipleDialog(null);
 		if(selectedfile!=null) {
 			for(int i=0; i< selectedfile.size(); i++) {
-				list.getItems().add(selectedfile.get(i).getAbsolutePath());
+				//list.getItems().add(selectedfile.get(i).getAbsolutePath());
 				if(music.search(selectedfile.get(i).getName(),selectedfile.get(i).getPath())) {
 					throw new SongAlreadyExistsException();
 				}
@@ -175,20 +192,6 @@ public class ChooseController{
 		}
 	}
 
-	@FXML
-	void loadFile(ActionEvent event) throws SongAlreadyExistsException {
-		FileChooser file= new FileChooser();
-		file.setTitle("Open Song List File");
-		file.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt", "*.doc", "*.docx"));
-		List<File> selectedfile = file.showOpenMultipleDialog(null);
-		if (selectedfile!=null) {
-			list.getItems().clear();
-			for(int i=0; i< selectedfile.size(); i++) {
-				song= music.first;
-				loadSongs(selectedfile.get(i).getPath());
-			}
-		}
-	}
 
 	/**
 	 * Makes the information persistent
@@ -215,10 +218,8 @@ public class ChooseController{
 
 	}
 
-
-
 	/**
-	 * 
+	 * This method saves the songs
 	 * @param event
 	 * @throws NullPointerException
 	 */
@@ -270,6 +271,26 @@ public class ChooseController{
 		stage.setTitle("Get more points!");
 		stage.setScene(scene);
 		stage.show();
+    }
+	
+	@FXML
+    void answer(ActionEvent event) {
+		sign.getActualUser();
+    	if(taylor.isSelected()) {
+    		writer= new Songwriter("Taylor Swift", "country", 3, "Songwriter");
+    		game.getUser().accumulatePoints(10);
+    	}else if(bob.isSelected()) {
+    		writer= new Songwriter("Bob Marley", "pop", 4, "lyricist");
+    		game.getUser().accumulatePoints(10);
+    	}else if(paul.isSelected()) {
+    		writer= new Songwriter("Paul mcCartney", "indie", 6, "lyricist");
+    		game.getUser().accumulatePoints(10);
+    	}else if(lennon.isSelected()) {
+    		writer= new Songwriter("John Lennon", "pop", 5, "Songwriter");
+    		game.getUser().accumulatePoints(10);
+    	}else {
+    		System.out.println("You didn't choose!");
+    	}
     }
 
 }
