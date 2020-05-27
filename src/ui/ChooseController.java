@@ -103,8 +103,15 @@ public class ChooseController{
 
 	public void initialize() {
 		add.setDisable(true);
-		if(game.getUser().getPoints() > 100) {
+		try{
+			if(game.getUser().getPoints() > 100) {
 			add.setDisable(false);
+			}
+		}catch(Exception e) {
+			Platform.runLater(() -> {
+				Alert dialog2 = new Alert(AlertType.ERROR, "You have to sign in first", ButtonType.OK);
+				dialog2.show();
+			});
 		}
 	}
 

@@ -25,26 +25,50 @@ public class Songwriter extends Genre implements Comparable<Songwriter>{
 	}
 	
 	//getters and setters
+	/** 
+	 * This method gets the type of writer. It can be Lyricist, composer, songwriter, jingle writer, and so on... 
+	 * @return type -type of writer
+	 */
 	public String getType() {
 		return type;
 	}
-
+	
+	/**
+	 * This method modifies the type of writer.
+	 * @param type -the new type for the writer
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
+	/**
+	 * This method gets the left leaf in the tree
+	 * @return left -the left leafs in the tree
+	 */
 	public Songwriter getLeft() {
 		return left;
 	}
-
+	
+	/**
+	 * This method modifies any left leaf within the tree
+	 * @param left -the new value of the leaf
+	 */
 	public void setLeft(Songwriter left) {
 		this.left = left;
 	}
-
+	
+	/**
+	 * This method gets the right leafs on the tree.
+	 * @return right -an object of type songwriter that represents the right leaf.
+	 */
 	public Songwriter getRight() {
 		return right;
 	}
-
+	
+	/**
+	 * This method modifies any right leaf within the tree
+	 * @param right -the new value of the leaf
+	 */
 	public void setRight(Songwriter right) {
 		this.right = right;
 	}

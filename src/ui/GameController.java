@@ -65,7 +65,7 @@ public class GameController {
 	private Image i;
 
 	private boolean activarObserver = false;
-	
+
 	private SignController sign;
 	private Game game;
 
@@ -107,9 +107,9 @@ public class GameController {
 
 	@FXML
 	private RadioButton sort;
-	
+
 	@FXML
-    private ImageView gif;
+	private ImageView gif;
 
 	//methods
 	/**
@@ -152,15 +152,15 @@ public class GameController {
 	 */
 	@FXML
 	void buySong(ActionEvent event) throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chooseSong.fxml"));
-		Parent p = fxmlLoader.load();
-		ChooseController c = fxmlLoader.getController();
-		c.setGameController(this);		
-		Scene scene= new Scene(p);
-		Stage stage= new Stage();
-		stage.setTitle("Game mode");
-		stage.setScene(scene);
-		stage.show();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("chooseSong.fxml"));
+			Parent p = fxmlLoader.load();
+			ChooseController c = fxmlLoader.getController();
+			c.setGameController(this);		
+			Scene scene= new Scene(p);
+			Stage stage= new Stage();
+			stage.setTitle("Game mode");
+			stage.setScene(scene);
+			stage.show();
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class GameController {
 	public void updateImage() {
 		roulette.setRotate(roulette.getRotate()+i.ANGLE);
 	}
-	
+
 	/**
 	 * This method adds the predetermined songs
 	 * @throws SongAlreadyExistsException -when a song already exists in the game
@@ -205,7 +205,7 @@ public class GameController {
 	public void updateMusic(MusicLibrary music) { 
 		this.music = music;
 	}
-	
+
 	/**
 	 * Modifies the actual user in the game
 	 * @param user -the user who logs in
@@ -270,13 +270,13 @@ public class GameController {
 			if(sort.isSelected()) {
 				SoundPlayer.startSound(music.getFirst().getSongName());
 			}else if(random.isSelected()) {
-				
+
 				Random ran = new Random();
-				
+
 				int index = (int) (ran.nextInt(music.getSize()));
 				SoundPlayer.startSound(music.getSong(index).getSongName());
 			}
-			
+
 			if(!activarObserver) {
 
 				songO.start();

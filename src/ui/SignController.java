@@ -53,8 +53,10 @@ public class SignController {
 
 	/**
 	 * This method will login the user and catch all the exceptions that can happen
-	 * meanwhile the user is trying to login. <b> pre: user != null</b> <b> pos: the
-	 * user log-in
+	 * meanwhile the user is trying to login.
+	 * <b> pre: user != null</b>
+	 * <b> pos: the user logs in </b>
+	 * @param event -event
 	 */
 	@FXML
 	void signIn(ActionEvent event) {
@@ -75,11 +77,19 @@ public class SignController {
 			});
 		}
 	}
-
+	
+	/**
+	 * This method gets the actual user in the game
+	 * @return getUser the actual user
+	 */
 	public User getActualUser() {
 		return game.getUser();
 	}
-
+	
+	/**
+	 * This method modifies the actual user in the game
+	 * @param users -the user to be modified
+	 */
 	public void setActualUser(User users) {
 		this.users= users;
 	}
