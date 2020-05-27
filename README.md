@@ -17,6 +17,10 @@ For the design part I used UML Class Diagram to show a general conceptual modeli
 <br> And in these images below: 
 <br>
 ![Captura de pantalla (216)](https://user-images.githubusercontent.com/45322807/82986170-ff0d0c00-9fba-11ea-81aa-9b9d9e255444.png)
+<br>
+![Captura de pantalla (217)](https://user-images.githubusercontent.com/45322807/82986383-59a66800-9fbb-11ea-928b-275d7c088138.png)
+<br>
+![Captura de pantalla (218)](https://user-images.githubusercontent.com/45322807/82986385-5a3efe80-9fbb-11ea-916a-fe8334bdbe76.png)
 
 ## 3. Presentation (In a video)
 You can see the project on action! I'll explain the process of doing this project, the data structures, algorithms, methods used for reaching this software, also I will show a litte demonstration of the game, playing a song, winning points and so on... <br>
