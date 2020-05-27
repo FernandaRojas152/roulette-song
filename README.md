@@ -14,9 +14,12 @@ Here I begin to do functional requirements and non-functional requirements, in w
 ## 2. Design
 For the design part I used UML Class Diagram to show a general conceptual modeling of my project.
 <br>You can see the design of the project [***here***](resources/data/ProyectoFinal.jpg) and [***here***](resources/data/Interfaz.jpg)
-<br> And in these images below: 
+<br> And in these images below: <br>
+![Captura de pantalla (216)](https://user-images.githubusercontent.com/45322807/82986170-ff0d0c00-9fba-11ea-81aa-9b9d9e255444.png)
+![Captura de pantalla (217)](https://user-images.githubusercontent.com/45322807/82986383-59a66800-9fbb-11ea-928b-275d7c088138.png)
+![Captura de pantalla (218)](https://user-images.githubusercontent.com/45322807/82986385-5a3efe80-9fbb-11ea-916a-fe8334bdbe76.png)
 ![Captura de pantalla (219)](https://user-images.githubusercontent.com/45322807/82986692-e8b38000-9fbb-11ea-85a5-3ebcafb78ef8.png)
-
+<br>
 These are some windows, you can see a roulette and multiple options, but you have to sign in or log in first before accessing to some of the other options.
 ## 3. Presentation (In a video)
 You can see the project on action! I'll explain the process of doing this project, the data structures, algorithms, methods used for reaching this software, also I will show a litte demonstration of the game, playing a song, winning points and so on... <br>
