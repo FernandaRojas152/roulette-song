@@ -23,8 +23,6 @@ public class Artist extends Person implements Comparable<Artist>, Serializable{
 	private Artist left;
 	/** right leaf of the binary search tree*/
 	private Artist right;
-	/** Association with song writer*/
-	private Songwriter writer;
 	
 	//Methods
 	/**

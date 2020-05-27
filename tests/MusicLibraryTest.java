@@ -40,18 +40,6 @@ class MusicLibraryTest {
 		assertEquals("give me love", music.getFirst().getSongName(), "Should be give me love");
 	}
 	
-	/**@Test
-	void testWrongAddSong() throws SongAlreadyExistsException {
-		setUpStage1();
-		try {
-			music.addSong("give me love", "/res/songs/give me love.wav");
-		}catch(Exception e) {
-			e.getMessage();
-		}
-		
-		Assertions.assertThrows(SongAlreadyExistsException.class, () -> music.addSong("give me love", "/res/songs/give me love.wav"), "Should throw an exception");
-	}
-	*/
 	@Test
 	void testGetSong() throws SongAlreadyExistsException {
 		setUpStage2();
@@ -68,7 +56,6 @@ class MusicLibraryTest {
 		setUpStage3();
 		assertEquals(3,music.getSize(), "Should be three");
 	}
-	
 	
 	@Test
 	void testSearchSong() throws SongAlreadyExistsException {

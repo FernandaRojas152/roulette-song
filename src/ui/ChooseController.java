@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.List;
+
+import customExceptions.InsufficientPointsException;
 import customExceptions.SongAlreadyExistsException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -106,10 +108,17 @@ public class ChooseController{
 		try{
 			if(game.getUser().getPoints() > 100) {
 			add.setDisable(false);
+			}else {
+				throw new InsufficientPointsException();
 			}
-		}catch(Exception e) {
+		}catch(NullPointerException e) {
 			Platform.runLater(() -> {
 				Alert dialog2 = new Alert(AlertType.ERROR, "You have to sign in first", ButtonType.OK);
+				dialog2.show();
+			});
+		}catch(InsufficientPointsException e2) {
+			Platform.runLater(() -> {
+				Alert dialog2 = new Alert(AlertType.ERROR, e2.getMessage(), ButtonType.OK);
 				dialog2.show();
 			});
 		}
