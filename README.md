@@ -1,11 +1,20 @@
-# Roulette-song
+# Roulette-song :musical_score:
 ## What is it?
 This project it's a roulette game that works with songs, the roulette will spin and select a random song or a sorted song depending on
 your selection, and if you guess which song is, you'll win points. You need 100 points to add a new Song<br>
-It was developed using language Java and using JavaFX and Scene Builder for graphics in interface.
+- It was developed using Java language, JavaFX and Scene Builder for graphics in the interface.
+- Class diagrams are made with Visual Paradigm.
+- For using this project either you can clone it or download it, have installed a IDE(integrated development environment) and compile the class called "Main".
+### Developer
+Fernanda, current student of system engineer at ICESI University, Colombia.
+### Explanation of the project
 ## 1. Analysis
-You can see the documents provided for the previous analysis for this project in this [***link***](INFORME.pdf)
+Here I begin to do functional requirements and non-functional requirements, in which it's explained in detail all the functions that the program has, and started to make design of scenaries and test case design. These tests are made with JUnit.
+<br>You can see the documents provided for the previous analysis for this project in this [***link***](INFORME.pdf)
 ## 2. Design
-You can see the design of the project [***here***](resources/data/ProyectoFinal.jpg) and [***here***]() <br> And in these images below: 
+For the design part I used UML Class Diagram to show a general conceptual modeling of my project.
+<br>You can see the design of the project [***here***](resources/data/ProyectoFinal.jpg) and [***here***](resources/data/Interfaz.jpg)
+<br> And in these images below: 
 ## 3. Presentation (In a video)
+You can see the project on action! I'll explain the process of doing this project, the data structures, algorithms, methods used for reaching this software, also I will show a litte demonstration of the game, playing a song, winning points and so on... <br>
 Youtube link:
