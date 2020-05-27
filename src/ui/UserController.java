@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import customExceptions.UserDoesntExistException;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import model.Game;
 import model.User;
@@ -75,12 +79,19 @@ public class UserController {
 	 */
 	@FXML
 	public void showUserInformation(ActionEvent event) throws UserDoesntExistException, FileNotFoundException, ClassNotFoundException, IOException {
-		sign.getActualUser();
+		try{
+			sign.getActualUser();
 		nickname.setText(game.getUser().getNickname());
 		gender.setText(game.getUser().getGender());
 		points.setText(String.valueOf(game.getUser().getPoints()));
 		nickname.setVisible(true);
 		gender.setVisible(true);
 		points.setVisible(true);
+		}catch(Exception e){
+			Platform.runLater(() -> {
+				Alert dialog = new Alert(AlertType.ERROR, "Sign in first!!", ButtonType.OK);
+				dialog.show();
+			});
+		}
 	}
 }
