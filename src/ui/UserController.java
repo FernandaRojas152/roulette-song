@@ -26,9 +26,10 @@ import model.User;
 
 public class UserController {
 	//associations
-	/** */
+	/** Association with the game*/
 	private Game game;
-	/** */
+	
+	/** Association with controller that has the actual user*/
 	private SignController sign;
 
 	//Attributes
