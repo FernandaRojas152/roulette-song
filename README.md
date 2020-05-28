@@ -31,4 +31,4 @@ You can see the project on action! I will explain the process of doing this proj
 Youtube link: https://www.youtube.com/watch?v=1DAvIyzp1EE&feature=youtu.be
 
 
-###### And, that's it! Hope you enjoy it the game :stuck_out_tongue_closed_eyes:
+###### And, that's it! Hope you enjoy the game! :stuck_out_tongue_closed_eyes:
