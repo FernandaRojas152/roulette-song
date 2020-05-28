@@ -1,7 +1,7 @@
 # Roulette-song :musical_score:
 ## What is it?
 This project it's a roulette game that works with songs, the roulette will spin and select a random song or a sorted song depending on
-your selection, and if you guess which song is, you'll win points. You need 100 points to add a new Song<br>
+your selection, and if you guess which song is, you will win points. You need 100 points to add a new Song<br>
 - It was developed using Java language, JavaFX and Scene Builder for graphics in the interface.
 - Class diagrams are made with Visual Paradigm.
 - For using this project either you can clone it or download it, have installed a IDE(integrated development environment) and compile the class called "Main".
@@ -22,5 +22,5 @@ For the design part I used UML Class Diagram to show a general conceptual modeli
 <br>
 These are some windows, you can see a roulette and multiple options, but you have to sign in or log in first before accessing to some of the other options.
 ## 3. Presentation (In a video)
-You can see the project on action! I'll explain the process of doing this project, the data structures, algorithms, methods used for reaching this software, also I will show a litte demonstration of the game, playing a song, winning points and so on... <br>
-Youtube link:
+You can see the project on action! I will explain the process of doing this project, the data structures, algorithms, methods used for reaching this software, also I will show a litte demonstration of the game, playing a song, winning points and so on... <br>
+Youtube link: https://www.youtube.com/watch?v=1DAvIyzp1EE&feature=youtu.be
